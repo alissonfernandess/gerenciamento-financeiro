@@ -20,5 +20,12 @@
   "workspaces": [
     "apps/*",
     "packages/*"
+<<<<<<< HEAD
   ]
+=======
+  ],
+  "dependencies": {
+    "sass": "^1.99.0"
+  }
+>>>>>>> a74f016 ( feat: Criação de componentes e funções utilitárias)
 }
