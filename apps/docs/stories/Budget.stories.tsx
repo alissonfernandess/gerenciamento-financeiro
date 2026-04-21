@@ -1,11 +1,13 @@
-import { Button } from "@repo/ui";
 
 import type { Meta, StoryObj } from '@storybook/react';
+import Budget from "../../../packages/ui/src/components/Budget";
 
 const meta = {
-  title: "Button",
-  component: Button,
-} satisfies Meta<typeof Button>;
+  title: "Budget",
+  component: Budget,
+  tags: ["autodocs"],
+
+} satisfies Meta<typeof Budget>;
 
 export default meta;
 
@@ -13,7 +15,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    appName: "docs",
-    children: "Click me",
+    amount: 5000,
   },
 };

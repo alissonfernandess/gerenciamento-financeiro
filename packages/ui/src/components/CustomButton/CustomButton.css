@@ -1,0 +1,27 @@
+
+.CustomButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 6px;
+    border-radius: 7px;
+    z-index: 9999;
+    border: none;
+    outline: none;
+}
+
+.rowGap {
+    gap: 10px;
+}
+
+.columnGap {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.darkmode {
+    color: green;
+}
+
+
+
