@@ -5,6 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: "ContactName",
   component: ContactName,
+  tags: ["autodocs"],
 } satisfies Meta<typeof ContactName>;
 
 export default meta;

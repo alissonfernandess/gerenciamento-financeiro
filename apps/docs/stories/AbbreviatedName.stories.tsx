@@ -5,7 +5,7 @@ import AbbreviatedName from "../../../packages/ui/src/components/AbbreviatedName
 const meta = {
   title: "AbbreviatedName",
   component: AbbreviatedName,
-    tags: ["autodocs"],
+  tags: ["autodocs"],
 
 } satisfies Meta<typeof AbbreviatedName>;
 

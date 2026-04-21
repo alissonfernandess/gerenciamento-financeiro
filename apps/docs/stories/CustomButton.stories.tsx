@@ -5,6 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta = {
   title: "CustomButton",
   component: CustomButton,
+  tags: ["autodocs"],
 } satisfies Meta<typeof CustomButton>;
 
 export default meta;
