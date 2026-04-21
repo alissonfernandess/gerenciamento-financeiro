@@ -1,6 +1,5 @@
 import AbbreviatedName from '../AbbreviatedName/AbbreviatedName'
 import ContactName from '../ContactName'
-import './Contact.css'
 
 type ContactPropsType = {
     gap?: string,

@@ -5077,11 +5077,15 @@ safe-regex-test@^1.1.0:
     is-regex "^1.2.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 scheduler@^0.27.0:
   version "0.27.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.27.0.tgz#0c4ef82d67d1e5c1e359e8fc76d3a87f045fe5bd"
 =======
 sass@^1.3.0, sass@^1.70.0, sass@^1.99.0:
+=======
+sass@^1.3.0, sass@^1.70.0:
+>>>>>>> ca1ffe8 ( style: changed style file extension / fix: uninstalled SASS)
   version "1.99.0"
   resolved "https://registry.npmjs.org/sass/-/sass-1.99.0.tgz"
   integrity sha512-kgW13M54DUB7IsIRM5LvJkNlpH+WhMpooUcaWGFARkF1Tc82v9mIWkCbCYf+MBvpIUBSeSOTilpZjEPr2VYE6Q==

@@ -1,5 +1,4 @@
-import { checkToUpperCase } from "@/utils/functions"
-import './ContactName.css'
+import { checkToUpperCase } from "../../../utils/functions";
 
 export type ContactNamePropsType = {
     contactName: string,
