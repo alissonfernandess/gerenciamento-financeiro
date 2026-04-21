@@ -1,0 +1,10 @@
+
+.FrameImg {
+    background-image: url('src/assets/images/profileBackground.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 24px;
+    padding: 2px;
+
+}
