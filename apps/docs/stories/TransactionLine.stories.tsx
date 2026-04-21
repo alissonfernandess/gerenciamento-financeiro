@@ -20,8 +20,10 @@ export const Primary: Story = {
     month: 8,
     year: 2024,
     Icon: FaPix,
-    transaction: "Pagamento Recebido",
+    transaction: "pix",
     value: 200,
-    bckColor: "white"
+    bckColor: "white",
+    operationBank: "deposit",
+    hasCurrencySymbol: true
   },
 };
