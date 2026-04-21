@@ -27,21 +27,14 @@ export const isValidDate = (day: number, dateType: "day" | "month") => {
 }
 
 // Função que retorna o valor de flex-direction de um elemento com display flex
-export const getAlignDirection = (contentDirection : "row" | "column", alignContent: string) => {
-  return contentDirection == "row" ? {justifyContent: alignContent} : {alignItems: alignContent}
-}
+export const getAlignDirection = (contentDirection : "row" | "column", alignContent: string) => contentDirection == "row" ? {justifyContent: alignContent} : {alignItems: alignContent}
 
 // transforma uma string em maiúscula com base no valor hasToUpperCase
-export const checkToUpperCase = (name: string, hasToUpperCase: boolean) => {
-  if (hasToUpperCase) {
-    return name.toUpperCase()
-  } 
-  return name
-}
+export const checkToUpperCase = (name: string, hasToUpperCase: boolean) => hasToUpperCase ? name.toUpperCase() : name
 
 //Recebe um nome e retorna abreviação do mesmo
 export const getAbbreviationFromWord = (initialName: string) => {
-  if (initialName.includes(" ")) { // Verifica se o nome é composto
+  if (initialName.includes(" ") && initialName.split(" ").length > 1) { // Verifica se o nome é composto
     const arrName = initialName.split(" ")
     return `${arrName[0][0].toUpperCase()}${arrName[1][0].toUpperCase()}` // Retorna as iniciais de nome e sobrenome
   }
