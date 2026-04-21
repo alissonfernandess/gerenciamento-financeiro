@@ -25,7 +25,8 @@
 =======
   ],
   "dependencies": {
-    "react-icons": "^5.6.0"
+    "react-icons": "^5.6.0",
+    "sass": "^1.99.0"
   }
 >>>>>>> a74f016 ( feat: Criação de componentes e funções utilitárias)
 }

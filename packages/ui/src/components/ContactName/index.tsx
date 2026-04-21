@@ -7,6 +7,7 @@ export type ContactNamePropsType = {
     fontSize?: string,
 }
 
+// Componente para exibir nome de contato com opção de conversão para maiúsculo
 const ContactName = ({contactName, fontColor, toUpperCase = false, fontSize= "14px"} : ContactNamePropsType) => {
     const style = {
         color: fontColor,

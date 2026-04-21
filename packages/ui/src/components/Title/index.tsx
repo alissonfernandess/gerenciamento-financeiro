@@ -11,6 +11,7 @@ type headingProps<T extends headingTag> = CustomTitleProps<T> & {
     as?: T
 }
 
+// Componente de título personalizado
 const CustomTitle = ({text, fontColor, as = "h1"}: headingProps<headingTag>) => {
     const Tag = as || "h1"
   return (

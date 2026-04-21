@@ -7,6 +7,7 @@ export type DateCustomPropsType = {
     color?: string
 }
 
+// Componente para exibir uma data formatada, com a opção de personalizar a cor do texto.
 const DateCustom = ({ day = 21, month = 2, year = 1994, color = "#A6A6A6" }: DateCustomPropsType) =>  {
 
     const formattedDate = formatDate({ day, month, year });

@@ -9,6 +9,7 @@ type TransactionLinePropsType = DateCustomPropsType & AmountPropsType & {
     bckColor: string
 }
 
+// Componente para exibir uma linha de transação, incluindo um ícone, descrição da transação, data e valor formatado.
 const TransactionLine = ({bckColor = "primary", Icon = FaPix, transaction, ...props } : TransactionLinePropsType) => {
   return (
     <tr className={`transactionLine ${bckColor == "primary" ? "primarybackgroundColor" : "secondarybackgroundColor"}`}>

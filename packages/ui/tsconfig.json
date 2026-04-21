@@ -4,6 +4,6 @@
     "outDir": "dist",
     "strictNullChecks": true
   },
-  "include": ["src", "utils", "src/components"],
+  "include": ["src", "utils", "src/components", "**/*.d.ts"],
   "exclude": ["node_modules", "dist"]
 }

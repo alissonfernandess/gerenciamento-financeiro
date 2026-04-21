@@ -1,4 +1,4 @@
-import './FrameImg.css';
+import './FrameImg.scss';
 
 type FrameImgProps = {
     children?: React.ReactNode,

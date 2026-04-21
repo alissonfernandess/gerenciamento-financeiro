@@ -1,6 +1,6 @@
 import React from 'react'
-import './Menu.css'
-import { getAlignDirection } from '@/utils/functions'
+import './Menu.scss'
+import { getAlignDirection } from '../../../utils/functions';
 
 type MenuPropsType = {
     children: React.ReactElement,
@@ -12,7 +12,7 @@ type MenuPropsType = {
     style?: React.CSSProperties
 }
 
-
+// Componente de menu
 const Menu = ({children, width, height, bckColor, flexDirection = "row", alignContent = "flex-start", style} : MenuPropsType) => {
 
     const styles : React.CSSProperties = {

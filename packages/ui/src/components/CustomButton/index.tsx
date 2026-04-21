@@ -9,9 +9,9 @@ export type customButtonProps = {
     eventClick?: () => void,
     hasBackgroundColor?: boolean,
     style?: React.CSSProperties,
-    darkMode?: boolean
 }
 
+// Componente de botão personalizado que aceita várias propriedades para personalização, incluindo cor, tipo e evento de clique.
 const CustomButton = ({hasBackgroundColor = false, ...props}: customButtonProps) => {
 
   const style = {
