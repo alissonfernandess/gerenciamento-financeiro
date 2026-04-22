@@ -1,4 +1,3 @@
-export * from './src/button';
 export * from './src/components/AbbreviatedName/AbbreviatedName';
 export * from './src/components/Amount/index';
 export * from './src/components/Budget/index';
@@ -12,3 +11,4 @@ export * from './src/components/Menu/index';
 export * from './src/components/ProfileOverview/index';
 export * from './src/components/Title/index';
 export * from './src/components/TransactionLine/index';
+export * from './src/components/WelcomeCard/WelcomeCard';
