@@ -1,6 +1,5 @@
- '../../app/globals.css';
-
-.menu {
-    display: flex;
-    padding: $gap-size-row-btn;
-}
+@import '../../../styles/typography.scss';
+ .menu {
+     display: flex;
+     padding: $gap-size-row-btn;
+ }
