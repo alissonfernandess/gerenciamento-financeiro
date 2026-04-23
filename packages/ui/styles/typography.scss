@@ -2,8 +2,64 @@ $base-font-size: 16px;
 $base-line-height: 1.5;
 $gap-size-row-btn: 10px;
 $gap-size-column-btn: 20px;
-$Primary-color: #091B32;
-$Secondary-color: #142132;
+
+// CORES
+
+$color-primary-900: #091B32;
+$color-primary-800: #142132;
+$color-primary-700: #172737;
+$color-primary-600: #263e70;
+$color-secondary: #142132;
+
+$color-neutral-white: #FFFFFF;
+$color-neutral-gray-100: #F6FEFF;
+$color-neutral-gray-200: #D9D9D9;
+$color-neutral-gray-300: #A6A6A6;
+$color-neutral-gray-400: #999999;
+
+// CORES DE FEEDBACK
+
 $negative-value: #FD4E4E;
-$positive-value: #44DE52;
+$positive-value: #4CFA57;
+
+// ESPAÇAMENTO
+
+// TIPOGRAFIA
+
 $font-family: 'inter', sans-serif;
+$font-weight-bold: Bold;
+$heading-font-height: 120%;
+$heading-font-size-lg: 32px;
+$heading-font-height-md: 120%;
+$heading-font-size-md: 24px;
+$heading-font-height-sm: 120%;
+$heading-font-size-sm: 20px;
+
+$subHeading-font-height: 130%;
+$subHeading-font-weight: Medium;
+$subHeading-font-size-lg: 24px;
+$subHeading-font-size-md: 20px;
+$subHeading-font-size-sm: 16px;
+
+$body-weight-md: Regular;
+$body-line-height-md: 130%;
+
+$caption-weight-md: Medium;
+$caption-font-size-md: 14px;
+$caption-line-height-md: 140%;
+
+$caption-weight-sm: Regular;
+$caption-font-size-sm: 12px;
+$caption-line-height-sm: 140%;
+
+$numeric-weight: Bold;
+$numeric-size: 32px;
+$numeric-line-height: 120%;
+
+
+//DARK MODE
+
+$dark-mode-black: #000000;
+$dark-mode-surface1: #061534;
+$dark-mode-surface2: #111c2b;
+
