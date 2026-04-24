@@ -1,13 +1,12 @@
+import  Contact from "../../../packages/ui/src/components/Contact";
 
 import type { Meta, StoryObj } from '@storybook/react';
-import Amount from "../../../packages/ui/src/components/Amount";
 
 const meta = {
-  title: "Amount",
-  component: Amount,
+  title: "Contact",
+  component: Contact,
   tags: ["autodocs"],
-
-} satisfies Meta<typeof Amount>;
+} satisfies Meta<typeof Contact>;
 
 export default meta;
 
@@ -15,7 +14,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    value: 1000,
-    operationBank: "withdrawal"
+    name: "John Doe",    
   },
 };

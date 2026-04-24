@@ -1,13 +1,14 @@
+@import '../../../styles/typography.scss';
 
 .Amount {
-    font-weight: 700;
-    font-size: 14px;
+    font-weight: $numeric-weight;
+    font-size: $base-font-size;
 }
 
 .deposit {
-    color: green;
+    color: $positive-value;
 }
 
 .withdrawal {
-    color: red;
+    color: $negative-value;
 }

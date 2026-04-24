@@ -1,27 +1,23 @@
+@import '../../../styles/typography.scss';
+
 
 .CustomButton {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 6px;
+    gap: $spacing-sm;
+    padding: 8px 16px;
     border-radius: 7px;
     z-index: 9999;
     border: none;
     outline: none;
-}
-
-.rowGap {
-    gap: 10px;
+    background-color: $color-primary-600;
 }
 
 .columnGap {
     flex-direction: column;
-    gap: 10px;
 }
 
-.darkmode {
-    color: green;
-}
 
 
 

@@ -1,10 +1,10 @@
 'use client'
 
+import './CustomButton.scss'
+
 export type customButtonProps = {
     type: "button" | "submit",
     text?: string,
-    fontColor: string,
-    backgroundColor: string,
     children?: React.ReactNode,
     eventClick?: () => void,
     hasBackgroundColor?: boolean,
@@ -15,8 +15,7 @@ export type customButtonProps = {
 const CustomButton = ({hasBackgroundColor = false, ...props}: customButtonProps) => {
 
   const style = {
-    color: props.fontColor,
-    backgroundColor: hasBackgroundColor ? props.backgroundColor : "transparent",
+    backgroundColor: hasBackgroundColor ? "transparent" : undefined,
   }
 
   return (

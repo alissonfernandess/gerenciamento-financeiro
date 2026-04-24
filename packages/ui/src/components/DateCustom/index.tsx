@@ -1,4 +1,5 @@
 import formatDate from "../../../utils/date";
+import "./DateCustom.scss";
 
 export type DateCustomPropsType = {
     day: number,
@@ -12,7 +13,7 @@ const DateCustom = ({ day = 21, month = 2, year = 1994 }: DateCustomPropsType) =
     const formattedDate = formatDate({ day, month, year });
 
     return (
-        <span>{formattedDate}</span>
+        <span className="DateCustom">{formattedDate}</span>
     )
 }
 
