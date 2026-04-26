@@ -12,5 +12,6 @@ export default function Home() {
             name="Alisson"
             onContinue={() => router.push("/dashboard")}
         />
+     
     )
 }

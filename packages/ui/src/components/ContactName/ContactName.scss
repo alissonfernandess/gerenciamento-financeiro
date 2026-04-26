@@ -1,4 +1,6 @@
+@import '../../../styles/typography.scss';
+
 .ContactName {
-    font-weight: $font-weight-medium;
-    font-size: $font-size-base ;
+    // font-size: $base-font-size;
+    font-size: 32px;
 }

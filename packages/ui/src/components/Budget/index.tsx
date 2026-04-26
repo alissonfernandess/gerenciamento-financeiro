@@ -1,3 +1,4 @@
+import { formatCurrency } from '../../../utils/functions';
 import './Budget.scss';
 
 type BudgetProps = {
@@ -8,7 +9,7 @@ type BudgetProps = {
 // Componente que exibi o valor do orçamento com opção de ocultação, substituindo o valor por asteriscos
 const Budget = ({ amount, isHidden=false }: BudgetProps) => {
 
-  const displayAmount = isHidden ? '****' : `R$ ${amount.toFixed(2)}`;
+  const displayAmount = isHidden ? '****' : `R$ ${formatCurrency(amount)}`;
   
   return (
     <span className='Budget'>

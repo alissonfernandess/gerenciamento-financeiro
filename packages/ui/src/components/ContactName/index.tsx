@@ -1,4 +1,5 @@
 import { checkToUpperCase } from "../../../utils/functions";
+import './ContactName.scss'
 
 export type ContactNamePropsType = {
     contactName: string,

@@ -15,7 +15,7 @@ export type customButtonProps = {
 const CustomButton = ({hasBackgroundColor = false, ...props}: customButtonProps) => {
 
   const style = {
-    backgroundColor: hasBackgroundColor ? "transparent" : undefined,
+    backgroundColor: !hasBackgroundColor ? "transparent" : undefined,
   }
 
   return (

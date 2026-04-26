@@ -1,5 +1,14 @@
+@import '../../../styles/typography.scss';
+
 .Contact {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    gap: $spacing-sm;
+    font-size: $base-font-size;
 }
+
+.Contact > :last-child {
+        margin-right: 0;
+        color: $color-neutral-gray-400;
+    }
