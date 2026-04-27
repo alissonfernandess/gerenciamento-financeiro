@@ -1,0 +1,97 @@
+@import '../../../styles/typography.scss';
+
+/* =====================================
+   Component
+===================================== */
+.Title {
+  margin: 0;
+  padding: 0;
+
+  font-family: $font-family-inter;
+  font-weight: 700;
+  line-height: $heading-font-height;
+  color: $color-neutral-white;
+
+  word-break: break-word;
+
+  transition: font-size 0.2s ease-in-out,
+              line-height 0.2s ease-in-out;
+}
+
+/* =====================================
+   Variants por heading
+===================================== */
+.CustomTitle--h1 {
+  font-size: $heading-font-size-lg; // 32px
+}
+
+.CustomTitle--h2 {
+  font-size: $heading-font-size-md; // 24px
+}
+
+.CustomTitle--h3,
+.CustomTitle--h4,
+.CustomTitle--h5,
+.CustomTitle--h6 {
+  font-size: $heading-font-size-sm; // 20px
+}
+
+/* =====================================
+   Tablet
+===================================== */
+@media (max-width: $tablet) {
+  .CustomTitle--h1 {
+    font-size: 28px;
+  }
+
+  .CustomTitle--h2 {
+    font-size: 22px;
+  }
+
+  .CustomTitle--h3,
+  .CustomTitle--h4,
+  .CustomTitle--h5,
+  .CustomTitle--h6 {
+    font-size: 18px;
+  }
+}
+
+/* =====================================
+   Mobile
+===================================== */
+@media (max-width: $mobile) {
+  .CustomTitle--h1 {
+    font-size: 24px;
+  }
+
+  .CustomTitle--h2 {
+    font-size: 20px;
+  }
+
+  .CustomTitle--h3,
+  .CustomTitle--h4,
+  .CustomTitle--h5,
+  .CustomTitle--h6 {
+    font-size: 16px;
+  }
+}
+
+/* =====================================
+   Small Mobile
+===================================== */
+@media (max-width: $small-mobile) {
+  .CustomTitle--h1 {
+    font-size: 22px;
+  }
+
+  .CustomTitle--h2 {
+    font-size: 18px;
+  }
+
+  .CustomTitle--h3,
+  .CustomTitle--h4,
+  .CustomTitle--h5,
+  .CustomTitle--h6 {
+    font-size: 15px;
+  }
+}

@@ -1,29 +1,41 @@
-import CustomButton, { customButtonProps } from "../CustomButton"
+import CustomButton, { customButtonProps } from "../CustomButton";
+import "./IconBtn.scss";
 
 type IconBtnProps = customButtonProps & {
-    icon: React.ElementType,
-    iconSize?: number,
-    iconDirection?: "row" | "column",
-    gap?: string
-}
+  icon: React.ElementType;
+  iconSize?: number;
+  iconDirection?: "row" | "column";
+  inverted?: boolean;
+};
 
-const IconBtn = ({iconDirection = "row", icon: Icon, gap = "10px", ...props}: IconBtnProps) => {
+const IconBtn = ({
+  icon: Icon,
+  iconSize = 32,
+  iconDirection = "row",
+  inverted = false,
+  style,
+  ...props
+}: IconBtnProps) => {
+
+  const reverseDirection =
+    inverted
+      ? iconDirection === "row"
+        ? "row-reverse"
+        : "column-reverse"
+      : iconDirection;
 
   return (
-    <CustomButton type={props.type} 
-                  text={props.text} 
-                  eventClick={props.eventClick} 
-                  hasBackgroundColor={props.hasBackgroundColor}
-                  style={{display: "flex", flexDirection: iconDirection, alignItems: "center", justifyContent: "center", gap: gap}} // Let the IconBtn component control the style for display flex
-                  >
-                  
-        <Icon
-              size={props.iconSize || 32}
-              style={props.style}
-              
-        />
+    <CustomButton
+      {...props}
+      className="IconBtn"
+      style={{
+        flexDirection: reverseDirection,
+        ...style
+      }}
+    >
+      <Icon size={iconSize} />
     </CustomButton>
-  ) 
-}
+  );
+};
 
-export default IconBtn
+export default IconBtn;

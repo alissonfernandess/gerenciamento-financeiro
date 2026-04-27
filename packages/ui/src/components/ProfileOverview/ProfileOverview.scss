@@ -1,5 +1,15 @@
+@import '../../../styles/typography.scss';
+
+
 .profile-overview {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   gap: $spacing-sm;;
    color: white;
+   padding: $spacing-md ;
+   font-size: $caption-font-size-md;
+   border-radius: 15px;
 
    h2 {
     font-weight: bold;
@@ -7,7 +17,7 @@
 }
 
 .budget-section{
-   width: 64% ;
+   width: 75% ;
    display: flex;
    align-items: center;
    justify-content: space-between;

@@ -6,9 +6,10 @@ import {TbMoneybagMove, TbMoneybagMoveBack } from "react-icons/tb"
 import './TransactionLine.scss'
 
 type TransactionLinePropsType = DateCustomPropsType & AmountPropsType & {
-    Icon: IconType,
+    Icon?: IconType,
     transactionType: "pix"  | "boleto" | "saque" | "deposito",
-    bckColor?: string
+    bckColor?: "primary" | "secondary",
+    description?: string
 }
 
 const iconMap: Record<TransactionLinePropsType['transactionType'], IconType> = {
@@ -23,20 +24,20 @@ const iconMap: Record<TransactionLinePropsType['transactionType'], IconType> = {
 const TransactionLine = ({bckColor = "primary", Icon, transactionType = "pix", ...props } : TransactionLinePropsType) => {
     Icon = iconMap[transactionType]
   return (
-    <tr className={`transactionLine ${bckColor == "primary" ? "primarybackgroundColor" : "secondarybackgroundColor"}`}>
-        <td>
+    <div className={`transactionLine ${bckColor == "primary" ? "primarybackgroundColor" : "secondarybackgroundColor"}`}>
+        <section>
             <Icon size={31}/>
-        </td>
-        <td>
-            {transactionType.toUpperCase()}
-        </td>
-        <td>
+        </section>
+        <section>
+            {props.description ? props.description : transactionType}
+        </section>
+        <section>
             <DateCustom day={props.day} month={props.month} year={props.year}/>
-        </td>
-        <td>
+        </section>
+        <section>
             <Amount value={props.value} hasCurrencySymbol={props.hasCurrencySymbol} operationBank={props.operationBank}/>
-        </td>
-    </tr>
+        </section>
+    </div>
   )
 }
 

@@ -1,6 +1,45 @@
 @import '../../../styles/typography.scss';
 
+/* =====================================
+   Component
+   Base Desktop: 24px
+===================================== */
 .ContactName {
-    // font-size: $base-font-size;
-    font-size: 32px;
+  margin: 0;
+  padding: 0;
+
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: inherit;
+
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  transition: font-size 0.2s ease-in-out;
+
+  /* =====================================
+     Tablet (~87.5%)
+     21px
+  ===================================== */
+  @media (max-width: $tablet) {
+    font-size: 21px;
+  }
+
+  /* =====================================
+     Mobile (~75%)
+     18px
+  ===================================== */
+  @media (max-width: $mobile) {
+    font-size: 18px;
+  }
+
+  /* =====================================
+     Small Mobile (~66%)
+     16px
+  ===================================== */
+  @media (max-width: $small-mobile) {
+    font-size: 16px;
+  }
 }

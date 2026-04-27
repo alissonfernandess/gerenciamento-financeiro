@@ -1,10 +1,67 @@
 @import '../../../styles/typography.scss';
 
+/* =====================================
+   Component
+===================================== */
 .AbbreviatedName {
-    text-align: center;
-    padding: 16px 12px;
-    font-weight: bold;
-    font-size: 2em;
-    border-radius: 50%;
-    color: $color-neutral-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 50px;
+  height: 50px;
+
+  padding: $spacing-sm 12px;
+
+  border-radius: 50%;
+
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1;
+  text-align: center;
+  color: $color-neutral-white;
+
+  flex-shrink: 0;
+  user-select: none;
+  overflow: hidden;
+
+  transition: all 0.2s ease-in-out;
+
+  /* Hover opcional para desktop */
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  /* =====================================
+     Tablet
+  ===================================== */
+  @media (max-width: $tablet) {
+    width: 54px;
+    height: 54px;
+
+    font-size: 1.7rem;
+    padding: 14px 10px;
+  }
+
+  /* =====================================
+     Mobile
+  ===================================== */
+  @media (max-width: $mobile) {
+    width: 43px;
+    height: 43px;
+
+    font-size: 1.4rem;
+    padding: 12px 8px;
+  }
+
+  /* =====================================
+     Small Mobile
+  ===================================== */
+  @media (max-width: $small-mobile) {
+    width: 38px;
+    height: 38px;
+
+    font-size: 1.1rem;
+    padding: 10px 6px;
+  }
 }

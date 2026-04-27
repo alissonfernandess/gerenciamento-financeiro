@@ -13,6 +13,7 @@ type ProfileOverviewProps = {
 
 const ProfileOverview = ({ name }: ProfileOverviewProps) => {
     const [showBudget, setshowBudget] = useState(true)
+    console.log(showBudget)
   return (
     <FrameImg height={200} width={400} backgroundImage={'/profileBackground.png'} className="profile-overview">
         <h2>Olá, {name}</h2>
