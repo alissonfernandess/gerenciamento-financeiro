@@ -5,7 +5,12 @@ export const hideContent = (isHiding : boolean) => {
 
 // formatação para valores monetários
 export const formatCurrency = (amount : number) => {
-  return amount.toFixed(2)
+  const formattedAmount = new Intl.NumberFormat('pt-BR', {
+    style: "decimal",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+  return formattedAmount;
 }
 
 // adição de sinal com base no tipo de operação bancária

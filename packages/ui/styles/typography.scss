@@ -1,3 +1,10 @@
+//Viewports
+
+$tablet: 1024px;
+$mobile: 768px;
+$small-mobile: 480px;
+
+
 $base-font-size: 16px;
 $base-line-height: 1.5;
 $gap-size-row-btn: 10px;
@@ -10,6 +17,8 @@ $color-primary-800: #142132;
 $color-primary-700: #172737;
 $color-primary-600: #263e70;
 $color-secondary: #142132;
+$color-accent: #143984;
+
 
 $color-neutral-white: #FFFFFF;
 $color-neutral-gray-100: #F6FEFF;
@@ -24,9 +33,21 @@ $positive-value: #4CFA57;
 
 // ESPAÇAMENTO
 
+$spacing-xs: 8px;
+$spacing-sm: 16px;
+$spacing-md: 24px;
+$spacing-lg: 32px;
+$spacing-xl: 40px;
+$spacing-2xl: 48px;
+$spacing-3xl: 64px;
+
+$radius-sm: 8px;
+$radius-md: 16px;
+$radius-lg: 24px;
+
 // TIPOGRAFIA
 
-$font-family: 'inter', sans-serif;
+$font-family-inter: 'inter', sans-serif;
 $font-weight-bold: Bold;
 $heading-font-height: 120%;
 $heading-font-size-lg: 32px;
@@ -53,9 +74,8 @@ $caption-font-size-sm: 12px;
 $caption-line-height-sm: 140%;
 
 $numeric-weight: Bold;
-$numeric-size: 32px;
+$numeric-size: 16px;
 $numeric-line-height: 120%;
-
 
 //DARK MODE
 

@@ -1,22 +1,22 @@
-type CustomTitleProps<T> = {
-    text: string,
-    fontColor: string,
-    fontSize?: string,
-    
-}
+import './Title.scss'
 
 type headingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 
-type headingProps<T extends headingTag> = CustomTitleProps<T> & {
+
+type CustomTitleProps<T extends headingTag> = {
+    text: string,
+    fontSize?: string,
     as?: T
+    
 }
 
+
 // Componente de título personalizado
-const CustomTitle = ({text, fontColor, as = "h1"}: headingProps<headingTag>) => {
+const CustomTitle = ({text, as = "h1"}: CustomTitleProps<headingTag>) => {
     const Tag = as || "h1"
   return (
     
-    <Tag>
+    <Tag className="Title">
         {text}
     </Tag>
   )

@@ -2,15 +2,19 @@
 
 import { WelcomeCard } from "@repo/ui"
 import { useRouter } from "next/navigation"
+import TransactionLine from "../../../../../packages/ui/src/components/TransactionLine"
+import FrameImg from "../../../../../packages/ui/src/components/FrameImg"
+import ProfileOverview from "../../../../../packages/ui/src/components/ProfileOverview"
 
 export default function Home() {
 
     const router = useRouter()
 
     return (
-        <WelcomeCard
-            name="Alisson"
-            onContinue={() => router.push("/dashboard")}
-        />
+        // <WelcomeCard
+        //     name="Alisson"
+        //     onContinue={() => router.push("/dashboard")}
+        // />
+        <ProfileOverview name="Ruan" />
     )
 }
