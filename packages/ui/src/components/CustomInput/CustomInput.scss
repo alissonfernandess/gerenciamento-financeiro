@@ -1,0 +1,52 @@
+@import '../../../styles/typography.scss';
+
+.CustomInput {
+    min-width: 100px;
+    min-height: 50px;
+    padding:  $spacing-sm $spacing-xs;
+    border-radius: 5px;
+    border: none;
+    font-family: $font-family-inter;
+
+    &:focus {
+        outline: 2px solid $color-accent;
+    }
+
+    &:required {
+        border: 3px solid $negative-value;
+    }
+}
+
+@media (max-width: $tablet) {
+  .CustomInput {
+    min-height: 46px;
+    padding: $spacing-sm $spacing-xs;
+
+    font-size: 0.95rem;
+  }
+}
+
+/* =======================
+   MOBILE
+======================= */
+@media (max-width: $mobile) {
+  .CustomInput {
+    min-height: 42px;
+    padding: $spacing-xs;
+
+    font-size: 0.9rem;
+    border-radius: 6px;
+  }
+}
+
+/* =======================
+   SMALL MOBILE
+======================= */
+@media (max-width: $small-mobile) {
+  .CustomInput {
+    min-height: 40px;
+    padding: 6px $spacing-xs;
+
+    font-size: 0.85rem;
+  }
+}
