@@ -14,3 +14,4 @@ export * from './src/components/TransactionLine/index';
 export * from './src/components/WelcomeCard/WelcomeCard';
 export * from './src/components/Cadastro/Cadastro';
 export * from './src/components/TransactionTypeSelect/TransactionTypeSelect'; 
+export * from './src/components/CustomInput/CustomInput';
