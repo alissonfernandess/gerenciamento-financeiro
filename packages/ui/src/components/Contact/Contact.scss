@@ -3,11 +3,15 @@
 .Contact {
   display: inline-flex;
   align-items: center; /* corrige alinhamento vertical */
-  justify-content: center;
+  justify-content: space-between;
   gap: $spacing-sm;
-
+  color: $color-neutral-white;
+  padding: $spacing-xs;
+  padding-right: 0;
   font-size: 16px;
   max-width: 100%;
+  width: 300px;
+  border-bottom: 2px solid $color-neutral-gray-200;
 
   transition: gap 0.2s ease-in-out, font-size 0.2s ease-in-out;
 

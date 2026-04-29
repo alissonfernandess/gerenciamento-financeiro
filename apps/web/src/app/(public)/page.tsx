@@ -3,6 +3,7 @@
 import { WelcomeCard, CustomInput } from "@repo/ui"
 import { useRouter } from "next/navigation"
 import {Cadastro} from "@repo/ui"
+import Contact from "../../../../../packages/ui/src/components/Contact"
 
 export default function Home() {
   const router = useRouter()
@@ -10,7 +11,7 @@ export default function Home() {
   return (
     <>
       {/* <Cadastro /> */}
-      <CustomInput required={true} placeholder="Digite algo..." onChange={(e : React.ChangeEvent<HTMLInputElement>) => console.log(e.target.value)} />
+      <Contact name="John Doe"/>
     </>
   )
 }
