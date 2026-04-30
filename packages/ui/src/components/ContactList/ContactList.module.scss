@@ -1,0 +1,110 @@
+@import '../../../styles/typography.scss';
+
+.ContactList {
+    padding: $spacing-lg;
+    width: 700px;
+    min-height: 500px;
+
+    display: flex;
+    flex-direction: column;
+
+    // impedir quebra de linha geral
+    white-space: nowrap;
+    overflow: hidden;
+
+    // Desktop grande
+    @media (min-width: 1025px) {
+        font-size: 1rem;
+    }
+
+    // Tablet
+    @media (max-width: 1024px) {
+        width: 90%;
+        min-height: 450px;
+        padding: $spacing-sm;
+        font-size: 0.9rem;
+    }
+
+    // Mobile
+    @media (max-width: 768px) {
+        width: 95%;
+        min-height: 400px;
+        padding: $spacing-xs;
+        font-size: 0.8rem;
+    }
+
+    // Mobile pequeno
+    @media (max-width: 480px) {
+        width: 100%;
+        min-height: 350px;
+        padding: 6px;
+        font-size: 0.72rem;
+    }
+
+    // Ajuste dos componentes internos
+    h2, h3, h4, input, span, p, li {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.List {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    width: 100%;
+    flex: 1;
+
+    scrollbar-color: white transparent;
+
+    & li {
+        list-style: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+
+    & li:first-child {
+        margin-top: $spacing-sm;
+    }
+
+    & li:last-child {
+        border-bottom: 2px solid transparent;
+        padding-bottom: $spacing-xs;
+    }
+
+    // Chrome / Edge
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: white;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    // Tablet
+    @media (max-width: 1024px) {
+        gap: $spacing-xs;
+    }
+
+    // Mobile
+    @media (max-width: 768px) {
+        gap: 6px;
+    }
+
+    // Mobile pequeno
+    @media (max-width: 480px) {
+        gap: 4px;
+    }
+}

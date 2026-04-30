@@ -5,15 +5,16 @@ type FrameImgProps = {
     height?: number,
     width?: number
     backgroundImage?: string,
-    className?: string
+    className?: string,
+    style?: React.CSSProperties
 }
 
 // Um frame básico da aplicação que possui uma imagem de background
 
-const FrameImg = ({ children, height = 369, width = 704, backgroundImage = '/profileBackground.png', className }: FrameImgProps) => {
+const FrameImg = ({ children, backgroundImage = '/profileBackground.png', className, style }: FrameImgProps) => {
 
     return (
-        <div style={{ height, width, backgroundImage: `url(${backgroundImage})` }} className={`FrameImg ${className || ''}`}>
+        <div style={{ backgroundImage: `url(${backgroundImage})`, ...style }} className={`FrameImg ${className || ''}`}>
             {children}
         </div>
     )

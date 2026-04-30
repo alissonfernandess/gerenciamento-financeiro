@@ -13,8 +13,7 @@
   border-radius: 24px;
 
   /* Desktop */
-  width: 704px;
-  height: 369px;
+ 
 
   font-size: 24px;
   overflow: hidden;
@@ -25,6 +24,22 @@
   background-repeat: no-repeat;
 
   color: $color-neutral-white;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #142132ac; /* Sombra escura */
+    z-index: 1; /* Coloca a sombra atrás do conteúdo */
+  }
+
+  * {
+    position: relative;
+    z-index: 2; /* Garante que o conteúdo fique acima da sombra */
+  }
 
   /* =====================================
      Tablet

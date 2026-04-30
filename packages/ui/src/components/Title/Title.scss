@@ -12,7 +12,7 @@
   line-height: $heading-font-height;
   color: $color-neutral-white;
 
-  word-break: break-word;
+  overflow-wrap: break-word;
 
   transition: font-size 0.2s ease-in-out,
               line-height 0.2s ease-in-out;

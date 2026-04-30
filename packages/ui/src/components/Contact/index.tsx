@@ -25,7 +25,6 @@ const Contact = ({ name = "John Doe", ...props }: ContactPropsType) => {
         <AbbreviatedName completedName={name} />
         <ContactName contactName={name} />
       </section>
-      <IoIosArrowForward/>
     </div>
   )
 }

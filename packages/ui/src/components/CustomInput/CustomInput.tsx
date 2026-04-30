@@ -14,12 +14,13 @@ type CustomInputProps = {
 export const CustomInput = ({
   required = true, 
   type = "text", 
+  style,
   ...props
 }: CustomInputProps) => {
   
   return (
     <input
-      style={props.style}
+      style={style}
       type={type}
       placeholder={props.placeholder}
       value={props.value}
