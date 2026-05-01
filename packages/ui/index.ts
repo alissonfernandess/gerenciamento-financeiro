@@ -13,3 +13,6 @@ export * from './src/components/Title/index';
 export * from './src/components/TransactionLine/index';
 export * from './src/components/WelcomeCard/WelcomeCard';
 export * from './src/components/Cadastro/Cadastro';
+export * from './src/components/Input/Input';
+export * from './src/components/Sidebar/Sidebar';
+export * from './utils';  

@@ -2,7 +2,15 @@
 
 import "./Cadastro.scss";
 
-export function Cadastro() {
+interface CadastroProps {
+  name: string;
+  phone: string;
+  isCadastro: boolean;
+  onContinue: () => void;
+  onBack: () => void;
+}
+
+export function Cadastro({ name, phone, isCadastro, onContinue }: CadastroProps) {
   return (
     <section className="cadastro">
       <div className="overlay">

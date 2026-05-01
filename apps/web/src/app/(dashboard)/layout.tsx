@@ -1,7 +1,6 @@
 "use client"
 
 import { Sidebar } from "@repo/ui"
-import { Home, ArrowRightLeft, FileText } from "lucide-react"
 import "./layout.scss"
 
 export default function DashboardLayout({
@@ -13,9 +12,9 @@ export default function DashboardLayout({
         <div className="layout">
             <Sidebar
                 items={[
-                    { label: "Início", icon: Home, href: "/dashboard" },
-                    { label: "Transferências", icon: ArrowRightLeft, href: "/transferencias" },
-                    { label: "Extrato", icon: FileText, href: "/extrato" },
+                    { label: "Início", icon: '', href: "/dashboard" },
+                    { label: "Transferências", icon: '', href: "/transferencias" },
+                    { label: "Extrato", icon: '', href: "/extrato" },
                 ]}
             />
 

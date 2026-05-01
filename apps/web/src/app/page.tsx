@@ -1,3 +1,10 @@
-import Home from "./(public)/page"
+import Home from "./(auth)/cadastro/page"
+import AuthLayout from "./(auth)/layout"
 
-export default Home
+export default function Page() {
+    return (
+        <AuthLayout>
+            <Home />
+        </AuthLayout>
+    )
+}

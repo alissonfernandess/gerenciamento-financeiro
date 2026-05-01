@@ -1,4 +1,4 @@
-@import '../../../../packages/ui/styles/typography.scss';
+@use '../../../../packages/ui/styles/typography.scss' as *;
 
 * {
     margin: 0;

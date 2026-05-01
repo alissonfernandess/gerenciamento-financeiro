@@ -1,0 +1,60 @@
+@import '../../../styles/typography.scss';
+
+.input {
+    width: 320px;
+    height: 36px;
+    border: none;
+    border-radius: $radius-sm;
+    padding: 0 $spacing-sm;
+    background: $color-neutral-white;
+    color: $color-primary-900;
+    font-size: $caption-font-size-sm;
+    outline: none;
+
+
+    &[aria-invalid="true"] {
+        border: 2px solid $negative-value;
+        border-radius: $radius-sm;
+        padding: 0 $spacing-sm;
+        color: $negative-value;
+
+        &::placeholder {
+            color: $negative-value;
+        }
+    }
+
+    &[type="number"]::-webkit-inner-spin-button,
+    &[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+    }
+
+}
+
+.input::placeholder {
+    color: $color-neutral-gray-300;
+}
+
+@media (max-width: 480px) {
+
+    .input {
+        width: 100%;
+        max-width: 260px;
+        height: 38px;
+    }
+
+    .error {
+        width: 100%;
+        max-width: 260px;
+    }
+}
+
+.error {
+    color: $negative-value;
+    font-size: $caption-font-size-sm;
+    line-height: $caption-line-height-sm;
+    font-weight: $caption-weight-sm;
+    width: 320px;
+    text-align: left;
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
