@@ -157,3 +157,8 @@ Aprenda mais sobre o poder do Turborepo:
 - [Filtros (Filtering)](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
 - [Opções de Configuração](https://turborepo.dev/docs/reference/configuration)
 - [Uso da CLI](https://turborepo.dev/docs/reference/command-line-reference)
+
+## 📚 Documentação
+
+Acesse a documentação do Design System:
+👉 https://zeroheight.com/76f12e925/p/3031ff-bem-vindo
