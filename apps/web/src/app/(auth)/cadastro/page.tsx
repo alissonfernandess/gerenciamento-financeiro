@@ -14,6 +14,7 @@ export default function CadastroPage() {
             <form className="cadastro-form" onSubmit={handleSubmit(handleNext)} noValidate>
                 <Input
                     type="text"
+                    placeholder="Nome"
                     error={errors.nome?.message || '\u00A0'}
                     {...register("nome", {
                         required: "Nome é obrigatório",
@@ -22,13 +23,14 @@ export default function CadastroPage() {
                 />
 
                 <Input
-                    type="number"
+                    type="tel"
+                    placeholder="(11) 99999-9999"
                     error={errors.telefone?.message || '\u00A0'}
                     {...register("telefone", {
                         required: "Telefone é obrigatório",
                     })}
                     required
-                />
+                    />
 
                 <button type="submit" className="btn-next">
                     <span>›</span>

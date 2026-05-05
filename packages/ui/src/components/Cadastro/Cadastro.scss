@@ -56,20 +56,10 @@
   width: 100%;
 }
 
-.form input {
-  width: 320px;
-  height: 36px;
-  border: none;
-  border-radius: $radius-sm;
-  padding: 0 $spacing-sm;
-  background: $color-neutral-white;
-  color: $color-primary-900;
-  font-size: $caption-font-size-sm;
-  outline: none;
-}
 
 .form input::placeholder {
   color: $color-neutral-gray-300;
+  opacity: 1;
 }
 
 .btn-next {

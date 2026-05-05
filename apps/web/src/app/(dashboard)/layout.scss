@@ -1,12 +1,10 @@
 @use "../../../../../packages/ui/styles/typography.scss" as *;
 
-
 .layout {
     display: grid;
     min-height: 100vh;
+    width: 100%;
     grid-template-columns: 1fr;
-    max-width: 1382px;
-    margin: 0 auto;
     background: $color-primary-900;
 }
 
@@ -33,15 +31,14 @@
 .container {
     background-color: #142132;
     width: 100%;
+    min-height: 100vh;
     padding: 0 16px;
     display: flex;
+    flex-direction: column;
     align-items: start;
     justify-content: start;
 }
 
-/* ========================================
-   Mobile
-======================================== */
 @media (max-width: $mobile) {
    .container {
     padding-top: 42px;

@@ -8,7 +8,7 @@ export default function AuthLayout({
   children: React.ReactNode
 }) {
   return (
-    <section className="cadastro">
+    <section className="auth-layout">
       <div className="overlay">
         <div className="card">
           {children}
