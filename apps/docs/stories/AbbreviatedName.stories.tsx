@@ -1,6 +1,6 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
-import AbbreviatedName from "../../../packages/ui/src/components/AbbreviatedName/AbbreviatedName";
+import { AbbreviatedName } from "@repo/ui";
 
 const meta = {
   title: "AbbreviatedName",

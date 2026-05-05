@@ -20,5 +20,11 @@ export const Primary: Story = {
     type: "button",
     backgroundColor: "#007bff",
     fontColor: "#fff",
+    text: "teste",
+    hasBackgroundColor: false,
+    iconDirection: "row",
+    inverted: false,
+    style: {},
+    iconSize: 0
   },
 };

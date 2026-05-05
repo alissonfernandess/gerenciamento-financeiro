@@ -1,0 +1,102 @@
+@import '../../../styles/typography.scss';
+
+/* =====================================
+   Component
+===================================== */
+.CustomButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $gap-size-row-btn;
+
+  padding: 8px 16px;
+
+  border: none;
+  outline: none;
+  border-radius: $radius-sm;
+
+  background-color: $color-primary-600;
+  color: $color-neutral-white;
+
+  font-family: $font-family-inter;
+  font-size: $base-font-size;
+  font-weight: 700;
+  line-height: $base-line-height;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition: all 0.2s ease-in-out;
+
+  z-index: 9999;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  /* =====================================
+     Tablet
+  ===================================== */
+  @media (max-width: $tablet) {
+    font-size: 15px;
+    padding: 8px 14px;
+    gap: 9px;
+  }
+
+  /* =====================================
+     Mobile
+  ===================================== */
+  @media (max-width: $mobile) {
+    font-size: 14px;
+    padding: 7px 12px;
+    gap: 8px;
+  }
+
+  /* =====================================
+     Small Mobile
+  ===================================== */
+  @media (max-width: $small-mobile) {
+    font-size: 13px;
+    padding: 6px 10px;
+    gap: 6px;
+    border-radius: 6px;
+  }
+}
+
+/* =====================================
+   Vertical Layout
+===================================== */
+.columnGap {
+  flex-direction: column;
+  gap: $gap-size-column-btn;
+
+  @media (max-width: $tablet) {
+    gap: 18px;
+  }
+
+  @media (max-width: $mobile) {
+    gap: 16px;
+  }
+
+  @media (max-width: $small-mobile) {
+    gap: 14px;
+  }
+}

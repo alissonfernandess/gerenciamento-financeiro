@@ -1,20 +1,108 @@
+@import '../../../styles/typography.scss';
 
+/* =====================================
+   Component
+   Objetivo:
+   - manter tudo sempre em linha
+   - reduzir apenas tamanhos conforme viewport
+===================================== */
 .transactionLine {
-    padding: 9px 37px;
-    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    td {
-        padding: 9px 37px;
-        text-align: center;
-        vertical-align: middle;
+  max-width: 100%;
+
+  color: $color-neutral-white;
+  overflow: hidden;
+
+  /* Colunas */
+  section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // padding: 9px 37px;
+
+    // white-space: nowrap;
+    flex-shrink: 1;
+    min-width: 0;
+    text-align: center;
+
+
+  }
+
+  section.data {
+    text-align: left;
+  }
+
+  /* Data */
+  section:nth-child(3) {
+    flex: 0 0 auto;
+  }
+
+  /* Valor */
+  section:nth-child(4) {
+    flex: 0 0 auto;
+    justify-content: flex-end;
+  }
+
+  /* =====================================
+     Tablet
+  ===================================== */
+  @media (max-width: $tablet) {
+    padding: 8px 24px;
+    font-size: 15px;
+
+    section {
+      padding: 8px 20px;
     }
 
+    section:first-child svg {
+      font-size: 27px;
+    }
+  }
+
+  /* =====================================
+     Mobile
+  ===================================== */
+  @media (max-width: $mobile) {
+    padding: 7px 14px;
+    font-size: 14px;
+
+    section {
+      padding: 7px 10px;
+    }
+
+    section:first-child svg {
+      font-size: 23px;
+    }
+  }
+
+  /* =====================================
+     Small Mobile
+  ===================================== */
+  @media (max-width: $small-mobile) {
+    padding: 6px 8px;
+    font-size: 12px;
+
+    section {
+      padding: 6px 5px;
+    }
+
+    section:first-child svg {
+      font-size: 19px;
+    }
+  }
 }
 
+/* =====================================
+   Background Variants
+===================================== */
 .secondarybackgroundColor {
-    background-color: gray
+  background-color: #142132;
 }
 
 .primarybackgroundColor {
-    background-color: green
+  background-color: transparent;
 }

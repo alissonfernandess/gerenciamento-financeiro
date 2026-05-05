@@ -1,0 +1,78 @@
+@use "../../../../../../packages/ui/styles/typography.scss" as *;
+
+
+h1 {
+    margin: 0 0 $spacing-3xl;
+    color: #FFF;
+    font-size: $heading-font-size-lg;
+    line-height: $heading-font-height;
+    font-weight: $font-weight-bold;
+}
+
+.cadastro-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+}
+
+
+
+.btn-next {
+    margin-top: $spacing-md;
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 50%;
+    background: $color-primary-900;
+    color: $color-neutral-white;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-next span {
+    font-size: 34px;
+    line-height: 1;
+}
+
+.cadastro-form>span {
+    color: $color-primary-900;
+    font-size: $caption-font-size-md;
+    line-height: $caption-line-height-md;
+    font-weight: $caption-weight-md;
+}
+
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 20px;
+        line-height: 120%;
+        margin-bottom: $spacing-md;
+        text-align: center;
+    }
+
+    .cadastro-form {
+        gap: 0;
+    }
+
+
+    .btn-next {
+        width: 52px;
+        height: 52px;
+        margin-top: $spacing-md;
+    }
+
+    .btn-next span {
+        font-size: 30px;
+    }
+
+    .cadastro-form>span {
+        font-size: 14px;
+    }
+
+
+}

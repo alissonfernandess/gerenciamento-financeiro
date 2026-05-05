@@ -1,18 +1,16 @@
 import formatDate from "../../../utils/date";
+import "./DateCustom.scss";
 
 export type DateCustomPropsType = {
-    day: number,
-    month: number,
-    year: number,
+    date: string
 }
 
 // Componente para exibir uma data formatada, com a opção de personalizar a cor do texto.
-const DateCustom = ({ day = 21, month = 2, year = 1994 }: DateCustomPropsType) =>  {
-
-    const formattedDate = formatDate({ day, month, year });
+const DateCustom = ({ date }: DateCustomPropsType) => {
+    const formattedDate = formatDate(date);
 
     return (
-        <span>{formattedDate}</span>
+        <span className="DateCustom">{formattedDate}</span>
     )
 }
 

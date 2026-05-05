@@ -16,5 +16,6 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     value: 1000,
+    operationBank: "withdrawal"
   },
 };

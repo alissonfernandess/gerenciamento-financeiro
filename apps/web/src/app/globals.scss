@@ -1,0 +1,12 @@
+@use '../../../../packages/ui/styles/typography.scss' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family-inter;
+    // background: $color-primary-900;
+}

@@ -1,23 +1,19 @@
 import { checkToUpperCase } from "../../../utils/functions";
+import './ContactName.scss'
 
 export type ContactNamePropsType = {
     contactName: string,
-    fontColor?: string,
     toUpperCase?: boolean,
-    fontSize?: string,
 }
 
 // Componente para exibir nome de contato com opção de conversão para maiúsculo
-const ContactName = ({contactName, fontColor, toUpperCase = false, fontSize= "14px"} : ContactNamePropsType) => {
-    const style = {
-        color: fontColor,
-        fontSize: fontSize
-    }
+const ContactName = ({contactName, toUpperCase = false} : ContactNamePropsType) => {
+   
 
     contactName = checkToUpperCase(contactName, toUpperCase)
 
   return (
-    <h4 style={style}>
+    <h4 className="ContactName">
         {contactName}
     </h4>
   )

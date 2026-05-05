@@ -1,5 +1,49 @@
+@import '../../../styles/typography.scss';
+
 .Contact {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+  display: inline-flex;
+  align-items: center; /* corrige alinhamento vertical */
+  justify-content: center;
+  gap: $spacing-sm;
+
+  font-size: 16px;
+  max-width: 100%;
+
+  transition: gap 0.2s ease-in-out, font-size 0.2s ease-in-out;
+
+  /* Nome do contato */
+  > :last-child {
+    margin-right: 0;
+    color: $color-neutral-gray-400;
+
+    display: flex;
+    align-items: center; /* centraliza verticalmente o texto */
+    line-height: 1;
+
+    white-space: nowrap;
+  }
+
+  /* =====================================
+     Tablet
+  ===================================== */
+  @media (max-width: $tablet) {
+    font-size: 15px;
+    gap: 10px;
+  }
+
+  /* =====================================
+     Mobile
+  ===================================== */
+  @media (max-width: $mobile) {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  /* =====================================
+     Small Mobile
+  ===================================== */
+  @media (max-width: $small-mobile) {
+    font-size: 13px;
+    gap: 6px;
+  }
 }

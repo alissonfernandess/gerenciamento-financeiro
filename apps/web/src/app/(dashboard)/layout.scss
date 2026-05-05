@@ -1,0 +1,49 @@
+@use "../../../../../packages/ui/styles/typography.scss" as *;
+
+
+.layout {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 1fr;
+    max-width: 1382px;
+    margin: 0 auto;
+    background: $color-primary-900;
+}
+
+/* tablet */
+@media (min-width: 768px) {
+    .layout {
+        grid-template-columns: 220px 1fr;
+    }
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+    .layout {
+        grid-template-columns: 260px 1fr;
+    }
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    align-items: start;
+}
+
+.container {
+    background-color: #142132;
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+}
+
+/* ========================================
+   Mobile
+======================================== */
+@media (max-width: $mobile) {
+   .container {
+    padding-top: 42px;
+   }
+}

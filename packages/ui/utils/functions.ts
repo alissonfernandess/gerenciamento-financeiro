@@ -5,7 +5,12 @@ export const hideContent = (isHiding : boolean) => {
 
 // formatação para valores monetários
 export const formatCurrency = (amount : number) => {
-  return amount.toFixed(2)
+  const formattedAmount = new Intl.NumberFormat('pt-BR', {
+    style: "decimal",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+  return formattedAmount;
 }
 
 // adição de sinal com base no tipo de operação bancária
@@ -34,10 +39,16 @@ export const checkToUpperCase = (name: string, hasToUpperCase: boolean) => hasTo
 
 //Recebe um nome e retorna abreviação do mesmo
 export const getAbbreviationFromWord = (initialName: string) => {
+  if (!initialName) return "";
+
   if (initialName.includes(" ") && initialName.split(" ").length > 1) { // Verifica se o nome é composto
     const arrName = initialName.split(" ")
-    return `${arrName[0][0].toUpperCase()}${arrName[1][0].toUpperCase()}` // Retorna as iniciais de nome e sobrenome
+    const firstInitial = arrName[0]?.charAt(0).toUpperCase() || "";
+    const secondInitial = arrName[1]?.charAt(0).toUpperCase() || "";
+    return `${firstInitial}${secondInitial}`;
   }
 
-  return `${initialName[0].toUpperCase()}${initialName[1]}` // Retorna a inicial e o caracter seguinte
+  const firstChar = initialName.charAt(0).toUpperCase() || "";
+  const secondChar = initialName.charAt(1).toLowerCase() || "";
+  return `${firstChar}${secondChar}`;
 }

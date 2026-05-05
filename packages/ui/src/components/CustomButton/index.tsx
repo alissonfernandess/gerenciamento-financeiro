@@ -1,38 +1,50 @@
 'use client'
 
+import './CustomButton.scss'
+import { formatCurrency } from '../../../utils/functions'
+
 export type customButtonProps = {
-    type: "button" | "submit",
-    text?: string,
-    fontColor: string,
-    backgroundColor: string,
-    children?: React.ReactNode,
-    eventClick?: () => void,
-    hasBackgroundColor?: boolean,
-    style?: React.CSSProperties,
+  type: "button" | "submit"
+  text?: string
+  children?: React.ReactNode
+  eventClick?: () => void
+  hasBackgroundColor?: boolean
+  style?: React.CSSProperties
+  className?: string
+  value?: number
 }
 
-// Componente de botão personalizado que aceita várias propriedades para personalização, incluindo cor, tipo e evento de clique.
-const CustomButton = ({hasBackgroundColor = false, ...props}: customButtonProps) => {
+export const CustomButton = ({
+  hasBackgroundColor = false,
+  eventClick,
+  text,
+  children,
+  style,
+  className,
+  type,
+  value
+}: customButtonProps) => {
 
-  const style = {
-    color: props.fontColor,
-    backgroundColor: hasBackgroundColor ? props.backgroundColor : "transparent",
+  const customStyle = {
+    backgroundColor: hasBackgroundColor ? "#091B32" : "transparent",
+    ...style
   }
 
+  const label = value !== undefined ? `R$ ${formatCurrency(value)}` : text
+
   return (
-    <button className="CustomButton"
-            type={props.type} style={{...style, ...props.style}} 
-            onClick={
-              props.eventClick ? props.eventClick : () => {console.log('Button clicked')}
-            }
+    <button
+      type={type}
+      className={`CustomButton ${className || ''}`}
+      style={customStyle}
+      onClick={eventClick}
     >
-        {props.children}
-        <span>
-            {props.text?.toLocaleUpperCase()}
-        </span>
-        
+      {children}
+
+      {label && (
+        <span>{label.toUpperCase()}</span>
+      )}
     </button>
   )
 }
 
-export default CustomButton

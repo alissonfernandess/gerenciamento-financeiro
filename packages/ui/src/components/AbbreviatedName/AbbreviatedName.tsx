@@ -4,18 +4,15 @@ import "./AbbreviatedName.scss"
 export type AbbreviatedNamePropsType = {
     completedName: string,
     circleColor?: string,
-    fontColor?: string
+    size?: number
 }
 
 // Componente para exibir o nome abreviado de um usuário, com a opção de personalizar as cores do círculo.
 
-const AbbreviatedName = ({completedName = "Geralt Rivia", circleColor = "#354973", fontColor= "white"} : AbbreviatedNamePropsType) => {
+export const AbbreviatedName = ({completedName = "Geralt Rivia", circleColor = "#354973", size = 61} : AbbreviatedNamePropsType) => {
 
     const style = {
-        color: fontColor,
-        backgroundColor: circleColor,
-       
-
+        backgroundColor: circleColor
     }
     const abbreviatedName = getAbbreviationFromWord(completedName)
     
@@ -25,5 +22,3 @@ const AbbreviatedName = ({completedName = "Geralt Rivia", circleColor = "#354973
         </span>
     )
 }
-
-export default AbbreviatedName

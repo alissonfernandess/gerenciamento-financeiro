@@ -1,10 +1,58 @@
+@import '../../../styles/typography.scss';
 
+/* =====================================
+   Component
+   Base desktop: 704 x 369
+   Foco: largura, altura e tipografia responsiva
+===================================== */
 .FrameImg {
-    background-image: url('../../../assets/images/profileBackground.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 24px;
-    padding: 2px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  border-radius: 24px;
 
+  /* Desktop */
+  width: 704px;
+  height: 369px;
+
+  font-size: 24px;
+  overflow: hidden;
+  
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: $color-neutral-white;
+
+  /* =====================================
+     Tablet
+     ~87.5%
+  ===================================== */
+  @media (max-width: $tablet) {
+    width: 616px;
+    height: 323px;
+    font-size: 21px;
+  }
+
+  /* =====================================
+     Mobile
+     ~75%
+  ===================================== */
+  @media (max-width: $mobile) {
+    width: 528px;
+    height: 277px;
+    font-size: 18px;
+  }
+
+  /* =====================================
+     Small Mobile
+     ~60%
+  ===================================== */
+  @media (max-width: $small-mobile) {
+    width: 422px;
+    height: 221px;
+    font-size: 16px;
+  }
 }
