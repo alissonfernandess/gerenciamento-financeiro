@@ -92,6 +92,7 @@
             color: $color-neutral-white;
             text-decoration: none;
             transition: opacity 0.2s;
+            
 
             &:hover {
                 opacity: 0.8;
@@ -104,7 +105,20 @@
             .link-label {
                 font-size: 16px; // $body-font-size-md;
                 font-weight: 400; // $body-weight-md;
+                transition: color 0.2s;
+            }
+
+           
+
+            &:hover{
+                opacity: 0.8;
             }
         }
+
+        .active {
+    text-decoration: underline;
+    font-weight: bold;
+}
     }
 }
+

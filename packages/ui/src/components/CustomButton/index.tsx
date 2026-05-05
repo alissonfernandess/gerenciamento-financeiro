@@ -1,6 +1,7 @@
 'use client'
 
 import './CustomButton.scss'
+import { formatCurrency } from '../../../utils/functions'
 
 export type customButtonProps = {
   type: "button" | "submit"
@@ -10,22 +11,26 @@ export type customButtonProps = {
   hasBackgroundColor?: boolean
   style?: React.CSSProperties
   className?: string
+  value?: number
 }
 
-const CustomButton = ({
+export const CustomButton = ({
   hasBackgroundColor = false,
   eventClick,
   text,
   children,
   style,
   className,
-  type
+  type,
+  value
 }: customButtonProps) => {
 
   const customStyle = {
     backgroundColor: hasBackgroundColor ? "#091B32" : "transparent",
     ...style
   }
+
+  const label = value !== undefined ? `R$ ${formatCurrency(value)}` : text
 
   return (
     <button
@@ -36,11 +41,10 @@ const CustomButton = ({
     >
       {children}
 
-      {text && (
-        <span>{text.toUpperCase()}</span>
+      {label && (
+        <span>{label.toUpperCase()}</span>
       )}
     </button>
   )
 }
 
-export default CustomButton

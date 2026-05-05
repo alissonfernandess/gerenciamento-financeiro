@@ -1,7 +1,7 @@
 export * from './src/components/AbbreviatedName/AbbreviatedName';
 export * from './src/components/Amount/index';
 export * from './src/components/Budget/index';
-export * from './src/components/CustomButton/index';
+export * from './src/components/CustomButton';
 export * from './src/components/Contact/index';
 export * from './src/components/ContactName/index';
 export * from './src/components/DateCustom/index';
@@ -15,4 +15,5 @@ export * from './src/components/WelcomeCard/WelcomeCard';
 export * from './src/components/Cadastro/Cadastro';
 export * from './src/components/Input/Input';
 export * from './src/components/Sidebar/Sidebar';
+export * from './src/components/AmountInput/AmountInput';
 export * from './utils';  

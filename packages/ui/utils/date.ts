@@ -1,31 +1,35 @@
+function formatDate(date: string | Date | null | undefined) {
+    if (!date) return ""
 
-// Utilitário para formatação de data, mantendo os valores válidos para dia e mês
+    // Se já for Date
+    if (date instanceof Date) {
+        if (isNaN(date.getTime())) return ""
 
-type dateType = {
-    day: number,
-    month: number,
-    year: number
-}
+        return new Intl.DateTimeFormat("pt-BR", {
+            timeZone: "UTC"
+        }).format(date)
+    }
 
-const date = new Date()
+    // Se for string no formato YYYY-MM-DD (mais comum no backend)
+    if (typeof date === "string") {
+        const isoMatch = /^\d{4}-\d{2}-\d{2}$/
 
-const MAX_DAY = 31;
-const MAX_MONTH = 12;
-const MIN_DAY = 1;
-const MIN_MONTH = 1;
-const MIN_YEAR = date.getFullYear()
+        if (isoMatch.test(date)) {
+            const [year, month, day] = date.split("-")
+            return `${day}/${month}/${year}`
+        }
 
+        // fallback seguro
+        const parsed = new Date(date)
 
-const formatDate = ({ day, month, year }: dateType) => {
+        if (isNaN(parsed.getTime())) return ""
 
-    day = day > MAX_DAY ? MAX_DAY : day < MIN_DAY ? MIN_DAY : day; // Ensure day is between 1 and 31
-    month = month > MAX_MONTH ? MAX_MONTH : month < MIN_MONTH ? MIN_MONTH : month; // Ensure month is between 1 and 12
-    year = (year <= 0 || `${year}`.length < 4) ? MIN_YEAR : year // Ensure the current year as the minimal selectable year
+        return new Intl.DateTimeFormat("pt-BR", {
+            timeZone: "UTC"
+        }).format(parsed)
+    }
 
-    const formattedDay = day < 10 ? `0${day}` : day;
-    const formattedMonth = month < 10 ? `0${month}` : month;
-
-    return `${formattedDay}/${formattedMonth}/${year}`;
+    return ""
 }
 
 export default formatDate

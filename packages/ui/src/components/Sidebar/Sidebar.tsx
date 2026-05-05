@@ -11,14 +11,18 @@ export type SidebarItem = {
 
 export type SidebarProps = {
     items: SidebarItem[];
-    userName?: string;
+    userName: string;
+    activePath?: string;
 };
 
-export const Sidebar: FC<SidebarProps> = ({ items, userName = "Felipe Saito" }) => {
+export const Sidebar: FC<SidebarProps> = ({ items, userName, activePath }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleSidebar = () => setIsOpen(!isOpen);
     const closeSidebar = () => setIsOpen(false);
+
+    // link-label ativo adicionar bold
+    
 
     return (
         <>
@@ -44,13 +48,15 @@ export const Sidebar: FC<SidebarProps> = ({ items, userName = "Felipe Saito" }) 
                 
                 <nav className="sidebar-nav">
                     {items.map((item, index) => {
+                        const isActive = item.href === (activePath || (typeof window !== 'undefined' ? window.location.pathname : ''));
+
                         const Icon = item.icon;
                         return (
-                            <a key={index} href={item.href} className="sidebar-link" onClick={closeSidebar}>
+                            <a key={index} href={item.href} className={`sidebar-link ${isActive ? 'active' : ''}`} onClick={closeSidebar}>
                                 {Icon && typeof Icon !== 'string' ? (
                                     <Icon size={20} className="link-icon" />
                                 ) : null}
-                                <span className="link-label">{item.label}</span>
+                                <span className={`link-label ${isActive ? 'active' : ''}`}>{item.label}</span>
                             </a>
                         );
                     })}

@@ -2,12 +2,15 @@
 
 import { ProfileOverview, TransactionLine } from "@repo/ui"
 import "./page.scss"
+import { useDashboard } from "./hooks/useDashboard"
 
 export default function DashboardPage() {
+    const { user, recentTransactions } = useDashboard()
+
     return (
         <div className="dashboard-page">
             <div className="profile-section">
-                <ProfileOverview name="Felipe" amount={2000} />
+                <ProfileOverview name={user?.nome ?? ''} amount={user?.saldo ?? 0} />
             </div>
 
             <div className="extrato-section">
@@ -23,30 +26,17 @@ export default function DashboardPage() {
                     </div>
 
                     <div className="extrato-tbody">
-                        <TransactionLine 
-                            day={3} month={2} year={2026}
-                            value={300}
-                            operationBank="withdrawal"
-                            transactionType="saque"
-                            description="Transferência Doc para Nubank"
-                            bckColor="secondary"
-                        />
-                        <TransactionLine 
-                            day={2} month={2} year={2026}
-                            value={250}
-                            operationBank="deposit"
-                            transactionType="pix"
-                            description="Transferência Pix de João"
-                            bckColor="primary"
-                        />
-                        <TransactionLine 
-                            day={10} month={1} year={2026}
-                            value={300}
-                            operationBank="withdrawal"
-                            transactionType="boleto"
-                            description="Pagamento via boleto"
-                            bckColor="secondary"
-                        />
+                        {recentTransactions.map((transaction, index) => (
+                            <TransactionLine
+                                key={transaction.key}
+                                index={index}
+                                date={transaction.date}
+                                value={transaction.value}
+                                operationBank={transaction.operationBank}
+                                transactionType={transaction.transactionType}
+                                description={transaction.description}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>

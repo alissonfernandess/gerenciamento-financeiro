@@ -1,4 +1,5 @@
-import CustomButton, { customButtonProps } from "../CustomButton";
+import { customButtonProps, CustomButton } from "../CustomButton";
+
 import "./IconBtn.scss";
 
 type IconBtnProps = customButtonProps & {
