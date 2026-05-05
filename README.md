@@ -161,4 +161,13 @@ Aprenda mais sobre o poder do Turborepo:
 ## 📚 Documentação
 
 Acesse a documentação do Design System:
-👉 https://zeroheight.com/76f12e925/p/3031ff-bem-vindo
+👉 
+https://zeroheight.com/76f12e925/p/3031ff-bem-vindo
+
+
+## Figma 
+
+Acesse o protótipo no Figma:
+👉
+https://www.figma.com/design/4H56DbkbBQkWvqAcbzuPPI/Projeto-Challenge?node-id=0-1&t=Brv0APKQU1obfKnb-1
+
