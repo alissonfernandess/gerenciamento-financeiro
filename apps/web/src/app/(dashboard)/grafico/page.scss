@@ -1,0 +1,53 @@
+.grafico-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+
+  h1 {
+    color: white;
+    margin: 0;
+  }
+}
+
+.metrics-section {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.goals-section {
+  background: #071d3a;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  /* sobe o card */
+  transform: translateY(-170px);
+
+  h2 {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .goals-section {
+    transform: none;
+  }
+}

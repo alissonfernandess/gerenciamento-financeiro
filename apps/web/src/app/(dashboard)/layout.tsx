@@ -4,7 +4,7 @@ import { Sidebar } from "@repo/ui"
 import "./layout.scss"
 import { FaHome } from "react-icons/fa"
 import { GrTransaction } from "react-icons/gr";
-import { RiFileList2Fill } from "react-icons/ri";
+import { RiFileList2Fill, RiBarChartFill } from "react-icons/ri";
 import { useDashboardLayout } from "./hooks/useDashboardLayout"
 
 export default function DashboardLayout({
@@ -25,6 +25,8 @@ export default function DashboardLayout({
                     { label: "Início", icon: FaHome, href: "/dashboard" },
                     { label: "Transferências", icon: GrTransaction, href: "/transferencias" },
                     { label: "Extrato", icon: RiFileList2Fill, href: "/extrato" },
+                    { label: "Gráfico", icon: RiBarChartFill, href: "/grafico" },
+
                 ]}
             />
 
