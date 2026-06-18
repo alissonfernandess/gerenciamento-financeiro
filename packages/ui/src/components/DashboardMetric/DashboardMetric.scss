@@ -1,5 +1,7 @@
+@import '../../../styles/typography.scss';
+
 .dashboard-metric {
-  background: #ffffff;
+  background: $color-primary-900;
   border-radius: 16px;
   padding: 20px;
   min-width: 180px;
@@ -8,14 +10,14 @@
   &__title {
     display: block;
     font-size: 14px;
-    color: #666;
+    color: $color-neutral-gray-300;
     margin-bottom: 8px;
   }
 
   &__value {
     display: block;
     font-size: 24px;
-    color: #111;
+    color: $color-neutral-white;
     margin-bottom: 8px;
   }
 
@@ -25,14 +27,14 @@
   }
 
   &--positive .dashboard-metric__variation {
-    color: #15803d;
+    color: $positive-value;
   }
 
   &--negative .dashboard-metric__variation {
-    color: #dc2626;
+    color: $negative-value;
   }
 
   &--neutral .dashboard-metric__variation {
-    color: #666;
+    color: $color-neutral-gray-300;
   }
 }

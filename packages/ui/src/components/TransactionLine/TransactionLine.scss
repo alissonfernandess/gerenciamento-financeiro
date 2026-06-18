@@ -7,14 +7,21 @@
    - reduzir apenas tamanhos conforme viewport
 ===================================== */
 .transactionLine {
-  display: flex;
+  display: grid;
+  grid-template-columns: 48px 2fr 1fr 1fr;
   align-items: center;
-  justify-content: space-between;
+  column-gap: 16px;
 
   max-width: 100%;
+  padding: 18px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 
   color: $color-neutral-white;
   overflow: hidden;
+
+  & + & {
+    margin-top: -1px;
+  }
 
   /* Colunas */
   section {
@@ -22,44 +29,55 @@
     align-items: center;
     justify-content: center;
 
-    // padding: 9px 37px;
-
-    // white-space: nowrap;
-    flex-shrink: 1;
     min-width: 0;
     text-align: center;
-
-
   }
 
   section.data {
     text-align: left;
   }
 
+  /* Ícone — moldura quadrada com borda */
+  section:first-child {
+    width: 48px;
+    height: 48px;
+    border: 1.5px solid $color-neutral-white;
+    border-radius: 10px;
+  }
+
+  /* Descrição */
+  section:nth-child(2) {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
   /* Data */
   section:nth-child(3) {
-    flex: 0 0 auto;
+    justify-content: center;
   }
 
   /* Valor */
   section:nth-child(4) {
-    flex: 0 0 auto;
     justify-content: flex-end;
+    font-weight: 600;
   }
 
   /* =====================================
      Tablet
   ===================================== */
   @media (max-width: $tablet) {
-    padding: 8px 24px;
+    grid-template-columns: 42px 2fr 1fr 1fr;
+    column-gap: 12px;
+    padding: 14px 24px;
     font-size: 15px;
 
-    section {
-      padding: 8px 20px;
+    section:first-child {
+      width: 42px;
+      height: 42px;
     }
 
     section:first-child svg {
-      font-size: 27px;
+      font-size: 24px;
     }
   }
 
@@ -67,15 +85,18 @@
      Mobile
   ===================================== */
   @media (max-width: $mobile) {
-    padding: 7px 14px;
+    grid-template-columns: 38px 2fr 1fr 1fr;
+    column-gap: 10px;
+    padding: 12px 14px;
     font-size: 14px;
 
-    section {
-      padding: 7px 10px;
+    section:first-child {
+      width: 38px;
+      height: 38px;
     }
 
     section:first-child svg {
-      font-size: 23px;
+      font-size: 20px;
     }
   }
 
@@ -83,15 +104,18 @@
      Small Mobile
   ===================================== */
   @media (max-width: $small-mobile) {
-    padding: 6px 8px;
+    grid-template-columns: 32px 1.5fr 1fr 1fr;
+    column-gap: 6px;
+    padding: 10px 8px;
     font-size: 12px;
 
-    section {
-      padding: 6px 5px;
+    section:first-child {
+      width: 32px;
+      height: 32px;
     }
 
     section:first-child svg {
-      font-size: 19px;
+      font-size: 17px;
     }
   }
 }

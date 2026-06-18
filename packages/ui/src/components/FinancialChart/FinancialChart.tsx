@@ -45,8 +45,8 @@ export const FinancialChart = ({ data = defaultData }: FinancialChartProps) => {
             <XAxis dataKey="month" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="receitas" name="Receitas" radius={[8, 8, 0, 0]} />
-            <Bar dataKey="despesas" name="Despesas" radius={[8, 8, 0, 0]} />
+            <Bar dataKey="receitas" name="Receitas" radius={[8, 8, 0, 0]} fill="#FFFFFF" />
+            <Bar dataKey="despesas" name="Despesas" radius={[8, 8, 0, 0]} fill="#FD4E4E" />
           </BarChart>
         </ResponsiveContainer>
       </div>
