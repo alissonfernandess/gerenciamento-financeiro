@@ -6,6 +6,10 @@ import { useBemVindo } from "./hooks/useBemVindo"
 export default function BemVindoPage() {
     const { user, handleContinue } = useBemVindo()
 
+    if (!user) {
+        return <div>Carregando...</div>
+    }
+
     return (
         <>
             <h1>Bem-vindo, {user?.nome}!</h1>

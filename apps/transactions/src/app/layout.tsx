@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Gerenciamento Financeiro",
-  description: "Gerenciamento Financeiro - Portal de finanças pessoais",
+  title: "Transações | Gerenciamento Financeiro",
+  description: "Listagem e cadastro de transações",
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
         className={`${inter.variable} font-sans`}
         style={{ height: "100%", width: "100%", margin: 0, padding: 0 }}
       >
-        <UserProvider>{children}</UserProvider>
+        <UserProvider mode="zone">{children}</UserProvider>
       </body>
     </html>
   );

@@ -1,0 +1,31 @@
+{
+  "name": "@repo/hooks",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "dependencies": {
+    "@repo/types": "*",
+    "@repo/ui": "*",
+    "@repo/utils": "*"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "eslint": "^9.39.1",
+    "next": "16.2.0",
+    "react": "^19.2.0",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "next": ">=15",
+    "react": ">=19"
+  }
+}

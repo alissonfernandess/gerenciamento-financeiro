@@ -1,0 +1,44 @@
+@use "../../../../../packages/ui/styles/typography.scss" as *;
+
+.layout {
+    display: grid;
+    min-height: 100vh;
+    width: 100%;
+    grid-template-columns: 1fr;
+    background: $color-primary-900;
+}
+
+@media (min-width: 768px) {
+    .layout {
+        grid-template-columns: 220px 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .layout {
+        grid-template-columns: 260px 1fr;
+    }
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    align-items: start;
+}
+
+.container {
+    background-color: #142132;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+
+@media (max-width: $mobile) {
+   .container {
+    padding-top: 42px;
+   }
+}
