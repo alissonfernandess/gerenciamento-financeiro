@@ -1,8 +1,6 @@
-
 export function getSaldo() {
     return Math.floor(Math.random() * 100000000)
 }
-
 
 export function getTransactions(): ITransaction[] {
     return [
@@ -72,3 +70,44 @@ export function getContacts() {
 }
 
 export const transactionTypes = ["Pix", "TED", "DOC", "Boleto"]
+
+export const descriptionSuggestions: Record<string, string[]> = {
+    Pix: [
+        "Transferência Pix para amigo",
+        "Pagamento de serviço via Pix",
+        "Reembolso via Pix",
+        "Aluguel via Pix",
+        "Compra via Pix",
+    ],
+    TED: [
+        "Transferência TED bancária",
+        "Pagamento de fornecedor via TED",
+        "Transferência entre contas TED",
+        "Salário via TED",
+    ],
+    DOC: [
+        "Transferência DOC entre bancos",
+        "Pagamento via DOC",
+        "Transferência DOC programada",
+    ],
+    Boleto: [
+        "Pagamento de boleto de água",
+        "Pagamento de boleto de energia",
+        "Pagamento de boleto de internet",
+        "Pagamento de aluguel via boleto",
+        "Pagamento de escola via boleto",
+        "Pagamento de cartão via boleto",
+    ],
+}
+
+export const validationRules = {
+    valor: {
+        min: 0.01,
+        max: 50000,
+    },
+    destinatario: {
+        minNameLength: 3,
+        cpfLength: 11,
+        cnpjLength: 14,
+    },
+}

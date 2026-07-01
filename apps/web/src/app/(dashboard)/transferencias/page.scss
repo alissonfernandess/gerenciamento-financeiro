@@ -398,3 +398,191 @@
         }
     }
 }
+
+/* ========================================
+   Sugestões de Descrição
+======================================== */
+.description-suggestions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &__label {
+        font-size: 0.8rem;
+        color: $color-neutral-gray-400;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    &__chip {
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        border: 1px solid rgba($color-neutral-gray-400, 0.25);
+        background: transparent;
+        color: $color-neutral-gray-400;
+        font-size: 0.78rem;
+        font-family: $font-family-inter;
+        cursor: pointer;
+        transition: all 0.15s ease;
+
+        &:hover {
+            border-color: $color-neutral-white;
+            color: $color-neutral-white;
+        }
+    }
+}
+
+
+/* ========================================
+   Campo de Descrição
+======================================== */
+.confirmacao-description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    &__label {
+        font-size: 0.8rem;
+        color: $color-neutral-gray-400;
+    }
+
+    &__input {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba($color-neutral-gray-400, 0.3);
+        color: $color-neutral-white;
+        font-size: 0.9rem;
+        font-family: $font-family-inter;
+        padding: 0.4rem 0;
+        outline: none;
+        transition: border-color 0.15s ease;
+
+        &::placeholder {
+            color: rgba($color-neutral-gray-400, 0.5);
+        }
+
+        &:focus {
+            border-bottom-color: $color-neutral-white;
+        }
+    }
+}
+
+/* ========================================
+   Erro de Valor
+======================================== */
+.confirmacao-error {
+    font-size: 0.82rem;
+    color: #ef4444;
+    margin-top: -0.5rem;
+}
+
+/* ========================================
+   Upload de Anexos
+======================================== */
+.attachment-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &__label {
+        font-size: 0.8rem;
+        color: $color-neutral-gray-400;
+    }
+
+    &__input {
+        display: none;
+    }
+
+    &__trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: fit-content;
+        padding: 0.45rem 1rem;
+        border-radius: $radius-sm;
+        border: 1px dashed rgba($color-neutral-gray-400, 0.4);
+        background: transparent;
+        color: $color-neutral-gray-400;
+        font-size: 0.85rem;
+        font-family: $font-family-inter;
+        cursor: pointer;
+        transition: all 0.15s ease;
+
+        &:hover {
+            border-color: $color-neutral-white;
+            color: $color-neutral-white;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: $radius-sm;
+        border: 1px solid rgba($color-neutral-gray-400, 0.2);
+        background: rgba($color-neutral-white, 0.03);
+
+        &-icon {
+            color: $color-neutral-gray-400;
+            flex-shrink: 0;
+        }
+
+        &-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 0;
+        }
+
+        &-name {
+            font-size: 0.82rem;
+            color: $color-neutral-white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &-size {
+            font-size: 0.72rem;
+            color: $color-neutral-gray-400;
+        }
+
+        &-remove {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            color: $color-neutral-gray-400;
+            cursor: pointer;
+            padding: 0.2rem;
+            border-radius: 4px;
+            transition: color 0.15s ease;
+            flex-shrink: 0;
+
+            &:hover {
+                color: #ef4444;
+            }
+        }
+    }
+
+    &__hint {
+        font-size: 0.72rem;
+        color: rgba($color-neutral-gray-400, 0.6);
+        margin: 0;
+    }
+}

@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { useUser } from "@/contexts/UserContext"
 import { useRouter } from "next/navigation"
-import { keys } from "@repo/ui"
+import { useValidation } from "./useValidation"
 
 export function useTransferencias() {
     const { user, setUser } = useUser()
     const router = useRouter()
+    const { validateDestinatario, validateTipo, validateValor } = useValidation()
 
     const [step, setStep] = useState<1 | 2>(1)
     const [selectedType, setSelectedType] = useState("")
@@ -15,6 +16,7 @@ export function useTransferencias() {
     const [valor, setValor] = useState("")
     const [error, setError] = useState("")
     const [typeError, setTypeError] = useState(false)
+    const [valorError, setValorError] = useState("")
 
     const filteredContacts = user?.contatos.filter((c) =>
         c.name.toLowerCase().includes(search.toLowerCase())
@@ -23,79 +25,55 @@ export function useTransferencias() {
     const handleSelectContact = (contact: IContato) => {
         setSelectedContact(contact)
         setSearch(contact.name)
+        setError("")
     }
 
     const handleContinue = () => {
-        let hasError = false
         setError("")
         setTypeError(false)
 
-        if (!selectedType) {
-            setTypeError(true)
-            hasError = true
-        }
+        const tipoErr = validateTipo(selectedType)
+        const destErr = validateDestinatario(selectedContact, search)
 
-        if (!selectedContact && !search) {
-            setError("Informe o destinatário")
-            hasError = true
-        } else if (!selectedContact) {
-            const isNumeric = /^\d+$/.test(search.replace(/[.\-\/]/g, ""))
-            const cleanSearch = search.replace(/[.\-\/]/g, "")
-            
-            if (isNumeric && cleanSearch.length !== 11 && cleanSearch.length !== 14) {
-                setError("CPF deve ter 11 dígitos ou CNPJ 14 dígitos")
-                hasError = true
-            } else if (!isNumeric && search.length < 3) {
-                setError("O nome ou chave deve ter pelo menos 3 caracteres")
-                hasError = true
-            }
-        }
+        if (tipoErr) setTypeError(true)
+        if (destErr) setError(destErr.message)
+        if (tipoErr || destErr) return
 
-        if (!hasError) {
-            setStep(2)
-        }
+        setStep(2)
     }
 
-    const handleConcluir = () => {
-        if (!user || !valor) return
+    const handleConcluir = (attachments: IAttachment[] = [], description?: string) => {
+    if (!user) return
 
-        const valorNumerico = parseFloat(valor.replace(/[^\d,]/g, "").replace(",", "."))
-        
-        if (isNaN(valorNumerico) || valorNumerico <= 0) {
-            alert("Valor inválido")
-            return
-        }
-
-        if (valorNumerico > user.saldo) {
-            alert("Saldo insuficiente")
-            return
-        }
-
-        const novoSaldo = user.saldo - valorNumerico
-
-        const novaTransacao: ITransaction = {
-            key: Date.now(),
-            date: new Date().toISOString().slice(0, 10),
-            value: valorNumerico,
-            operationBank: "withdrawal",
-            transactionType: (selectedType.toLowerCase() || "pix") as TransactionType,
-            description: `Transferência para ${selectedContact?.name || search}`,
-            bckColor: "secondary",
-        }
-
-        const usuarioAtualizado = {
-            ...user,
-            saldo: novoSaldo,
-            transacoes: [novaTransacao, ...user.transacoes]
-        }
-
-        setUser(usuarioAtualizado)
-        
-
-        router.push("/dashboard")
-
+    const valorErr = validateValor(valor, user.saldo)
+    if (valorErr) {
+        setValorError(valorErr.message)
+        return
     }
 
+    setValorError("")
+
+    const valorNumerico = parseFloat(valor.replace(/[^\d,]/g, "").replace(",", "."))
+
+    const novaTransacao: ITransaction = {
+        key: Date.now(),
+        date: new Date().toISOString().slice(0, 10),
+        value: valorNumerico,
+        operationBank: "withdrawal",
+        transactionType: (selectedType.toLowerCase() || "pix") as TransactionType,
+        description: description || `Transferência para ${selectedContact?.name || search}`,
+        bckColor: "secondary",
+        attachments,
+    }
+
+    setUser({
+        ...user,
+        saldo: user.saldo - valorNumerico,
+        transacoes: [novaTransacao, ...user.transacoes],
+    })
+
+    router.push("/dashboard")
+}
     return {
         user,
         step,
@@ -111,11 +89,12 @@ export function useTransferencias() {
         setValor,
         error,
         setError,
+        valorError,
         typeError,
         setTypeError,
         filteredContacts,
         handleSelectContact,
         handleContinue,
-        handleConcluir
+        handleConcluir,
     }
 }

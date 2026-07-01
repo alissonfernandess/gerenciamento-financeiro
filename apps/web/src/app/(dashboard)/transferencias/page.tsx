@@ -22,6 +22,7 @@ export default function TransferenciasPage() {
         setError,
         typeError,
         setTypeError,
+        valorError,        // 👈 adicione aqui
         handleSelectContact,
         handleContinue,
         handleConcluir
@@ -55,6 +56,7 @@ export default function TransferenciasPage() {
             search={search}
             selectedType={selectedType}
             valor={valor}
+            valorError={valorError}
             setValor={setValor}
             handleConcluir={handleConcluir}
         />
