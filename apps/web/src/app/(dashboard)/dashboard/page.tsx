@@ -1,14 +1,14 @@
 "use client"
 
 import { useState } from "react"
-import { DashboardMetric, ProfileOverview, TransactionLine, FinancialChart, CustomButton } from "@repo/ui"
+import { DashboardMetric, ProfileOverview, FinancialChart, CustomButton } from "@repo/ui"
 import "./page.scss"
 import { useDashboard } from "./hooks/useDashboard"
 import { useGoals } from "./hooks/useGoals"
 import { EditableGoalCard } from "./components/EditableGoalCard"
 
 export default function DashboardPage() {
-  const { user, recentTransactions } = useDashboard()
+  const { user } = useDashboard()
   const { goals, addGoal, updateGoal, removeGoal } = useGoals()
   const [isEditingGoals, setIsEditingGoals] = useState(false)
 
@@ -18,7 +18,6 @@ export default function DashboardPage() {
 
   return (
     <div className="dashboard-page">
-      {/* Header com saudação e saldo em conta */}
       <div className="profile-section">
         <ProfileOverview
           name={user?.nome ?? ""}
@@ -26,36 +25,6 @@ export default function DashboardPage() {
         />
       </div>
 
-      {/* Extrato — título dentro da mesma caixa da tabela */}
-      <div className="extrato-section">
-        <div className="extrato-table">
-          <div className="extrato-header-title">
-            <h2 className="title">Extrato</h2>
-          </div>
-
-          <div className="extrato-thead">
-            <span>Lançamentos</span>
-            <span>Data</span>
-            <span>Valor(R$)</span>
-          </div>
-
-          <div className="extrato-tbody">
-            {recentTransactions.map((transaction, index) => (
-              <TransactionLine
-                key={transaction.key}
-                index={index}
-                date={transaction.date}
-                value={transaction.value}
-                operationBank={transaction.operationBank}
-                transactionType={transaction.transactionType}
-                description={transaction.description}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Coluna esquerda: métricas + gráfico | Coluna direita: metas */}
       <div className="content-grid">
         <div className="overview-column">
           <div className="metrics-section">

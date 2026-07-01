@@ -1,3 +1,4 @@
+// dashboard/hooks/useTransactions.ts
 import { useState, useMemo } from "react"
 import { useUser } from "@/contexts/UserContext"
 
@@ -5,7 +6,7 @@ const PAGE_SIZE = 5
 
 export type TransactionType = "pix" | "boleto" | "saque" | "deposito" | "ted" | "doc"
 
-export function useExtrato() {
+export function useTransactions() {
   const { user } = useUser()
   const all = user?.transacoes || []
 
@@ -26,7 +27,9 @@ export function useExtrato() {
     })
   }, [all, search, typeFilter])
 
-  const paginated = useMemo(() => filtered.slice(0, page * PAGE_SIZE), [filtered, page])
+  const paginated = useMemo(() => {
+    return filtered.slice(0, page * PAGE_SIZE)
+  }, [filtered, page])
 
   const hasMore = paginated.length < filtered.length
 
