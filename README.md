@@ -65,7 +65,6 @@ Sem o `turbo` global:
 ```sh
 npx turbo build --filter=docs
 yarn exec turbo build --filter=docs
-yarn exec turbo build --filter=docs
 ```
 
 ### Desenvolver (Develop)
@@ -85,7 +84,6 @@ Sem o `turbo` global, use o seu gerenciador de pacotes:
 cd my-turborepo
 npx turbo dev
 yarn exec turbo dev
-yarn exec turbo dev
 ```
 
 Você pode desenvolver num pacote específico usando um [filtro](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
@@ -100,7 +98,6 @@ Sem o `turbo` global:
 
 ```sh
 npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
 yarn exec turbo dev --filter=web
 ```
 
@@ -126,26 +123,61 @@ Sem o `turbo` global, use o seu gerenciador de pacotes:
 cd my-turborepo
 npx turbo login
 yarn exec turbo login
-yarn exec turbo login
 ```
 
 Isso autenticará a CLI do Turborepo com a sua [conta Vercel](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-A seguir, você pode vincular o seu Turborepo ao seu Cache Remoto executando o seguinte comando a partir da raiz do seu Turborepo:
-
-Com o [`turbo` global](https://turborepo.dev/docs/getting-started/installation#global-installation) instalado:
+A seguir, você pode vincular o seu Turborepo ao seu Cache Remoto executando o seguinte comando:
 
 ```sh
 turbo link
 ```
 
-Sem o `turbo` global:
+---
 
-```sh
-npx turbo link
-yarn exec turbo link
-yarn exec turbo link
-```
+## 🚀 Funcionalidades Implementadas
+
+### 📊 Dashboard
+
+- Visão geral com saldo total e métricas de despesas
+- Gráfico financeiro interativo
+- Metas financeiras editáveis — adicionar, editar e remover metas com formulário inline
+
+### 📋 Extrato (`/extrato`)
+
+- Listagem completa de transações com ícone por tipo
+- **Busca em tempo real** por descrição ou tipo de transação
+- **Filtros por tipo** via chips interativos (Pix, Boleto, Saque, Depósito, TED, DOC)
+- **Paginação com "Carregar mais"** — carrega 5 transações por vez com contador de itens restantes
+- Estado vazio com mensagem quando nenhuma transação é encontrada
+
+### 💸 Transferências (`/transferencias`)
+
+**Step 1 — Destinatário:**
+- Seleção de tipo de transação via dropdown animado (Pix, TED, DOC, Boleto)
+- Campo de busca por nome, CPF/CNPJ ou chave Pix
+- Seleção rápida por lista de contatos
+
+**Step 2 — Confirmação:**
+- **Sugestões automáticas de descrição** baseadas no tipo de transação selecionado
+- Campo de descrição editável, preenchido automaticamente ao clicar em uma sugestão
+- **Validação avançada** com mensagens de erro inline:
+  - Tipo de transação obrigatório
+  - Destinatário: nome mínimo de 3 caracteres, CPF com 11 dígitos ou CNPJ com 14
+  - Valor: mínimo de R$ 0,01, máximo de R$ 50.000,00 e verificação de saldo disponível
+- **Upload de anexos** — recibos e documentos em PNG, JPG ou PDF (máx. 5 MB por arquivo), com lista de arquivos anexados e opção de remover individualmente
+- Exibição de saldo disponível e data da transferência
+
+### 🗂️ Arquitetura
+
+- `useExtrato` — hook dedicado para busca, filtro e paginação do extrato
+- `useTransferencias` — hook principal do fluxo de transferência
+- `useValidation` — hook de validações reutilizável (destinatário, tipo, valor)
+- `AttachmentUpload` — componente de upload com leitura via FileReader API
+- `DescriptionSuggestions` — componente de sugestões por categoria
+- `TransactionTypeSelector` — dropdown de tipo com animação e estado de erro
+
+---
 
 ## Links Úteis
 
@@ -161,13 +193,9 @@ Aprenda mais sobre o poder do Turborepo:
 ## 📚 Documentação
 
 Acesse a documentação do Design System:
-👉 
-https://zeroheight.com/76f12e925/p/3031ff-bem-vindo
+👉 https://zeroheight.com/76f12e925/p/3031ff-bem-vindo
 
-
-## Figma 
+## Figma
 
 Acesse o protótipo no Figma:
-👉
-https://www.figma.com/design/4H56DbkbBQkWvqAcbzuPPI/Projeto-Challenge?node-id=0-1&t=Brv0APKQU1obfKnb-1
-
+👉 https://www.figma.com/design/4H56DbkbBQkWvqAcbzuPPI/Projeto-Challenge?node-id=0-1&t=Brv0APKQU1obfKnb-1
