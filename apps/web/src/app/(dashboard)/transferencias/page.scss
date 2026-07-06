@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../../../../../../packages/ui/styles/typography.scss" as *;
 
 /* ========================================
@@ -9,6 +10,20 @@
     gap: 24px;
     padding: 32px 0;
     max-width: 720px;
+}
+
+/* Utilitário: visível apenas para leitores de tela.
+   Remover se já estiver no SCSS global. */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* ========================================
@@ -35,6 +50,11 @@
 
         &:hover {
             border-color: rgba($color-neutral-gray-400, 0.5);
+        }
+
+        &:focus-visible {
+            outline: 2px solid $color-neutral-white;
+            outline-offset: 2px;
         }
 
         .chevron {
@@ -66,15 +86,32 @@
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         animation: dropdownFadeIn 0.2s ease;
 
+        li {
+            margin: 0;
+        }
+
+        /* Opção agora é um <button> dentro do li: reset incluído */
         .type-option {
+            display: block;
+            width: 100%;
             padding: 12px 24px;
+            background: transparent;
+            border: none;
             color: $color-neutral-gray-300;
             font-size: 15px;
+            font-family: inherit;
+            text-align: left;
             cursor: pointer;
             transition: background-color 0.15s ease, color 0.15s ease;
 
             &:hover {
                 background-color: rgba($color-neutral-white, 0.05);
+                color: $color-neutral-white;
+            }
+
+            &:focus-visible {
+                outline: 2px solid $color-neutral-white;
+                outline-offset: -2px;
                 color: $color-neutral-white;
             }
 
@@ -147,6 +184,11 @@
             border-radius: $radius-sm;
             background-color: $color-primary-900 !important;
             border: 1px solid rgba($color-neutral-gray-400, 0.3);
+
+            &:focus-visible {
+                outline: 2px solid $color-neutral-white;
+                outline-offset: 2px;
+            }
         }
     }
 
@@ -161,15 +203,17 @@
             color: $color-neutral-white;
             font-size: 15px;
             padding: 8px 0;
-            outline: none;
             transition: border-color 0.2s ease;
 
             &::placeholder {
                 color: $color-neutral-gray-400;
             }
 
-            &:focus {
-                border-bottom-color: $color-neutral-white;
+            /* Foco visível: engrossa e clareia a borda inferior */
+            &:focus-visible {
+                outline: none;
+                border-bottom: 3px solid $color-neutral-white;
+                padding-bottom: 7px; /* compensa o pixel extra da borda */
             }
         }
 
@@ -201,12 +245,24 @@
     display: flex;
     flex-direction: column;
 
+    li {
+        border-bottom: 1px solid rgba($color-neutral-gray-400, 0.15);
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
     .contact-item {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        width: 100%;
         padding: 16px 8px;
-        border-bottom: 1px solid rgba($color-neutral-gray-400, 0.15);
+        background: transparent;
+        border: none;
+        font-family: inherit;
+        text-align: left;
         cursor: pointer;
         transition: background-color 0.2s ease;
 
@@ -214,12 +270,14 @@
             background-color: rgba($color-neutral-white, 0.03);
         }
 
-        &.selected {
-            background-color: rgba($color-neutral-white, 0.06);
+        &:focus-visible {
+            outline: 2px solid $color-neutral-white;
+            outline-offset: -2px;
+            background-color: rgba($color-neutral-white, 0.03);
         }
 
-        &:last-child {
-            border-bottom: none;
+        &.selected {
+            background-color: rgba($color-neutral-white, 0.06);
         }
 
         .contact-info {
@@ -279,7 +337,6 @@
     }
 }
 
-
 /* ========================================
    Saldo / Data
 ======================================== */
@@ -330,11 +387,16 @@
     background-color: $color-primary-900 !important;
     border-radius: $radius-sm !important;
     border: 1px solid rgba($color-neutral-gray-400, 0.2);
-    transition: all 0.25s ease;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
 
     &:hover {
         border-color: rgba($color-neutral-gray-400, 0.5);
-        background-color: lighten($color-primary-900, 4%) !important;
+        background-color: color.adjust($color-primary-900, $lightness: 4%) !important;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $color-neutral-white;
+        outline-offset: 2px;
     }
 }
 
@@ -427,15 +489,19 @@
         font-size: 0.78rem;
         font-family: $font-family-inter;
         cursor: pointer;
-        transition: all 0.15s ease;
+        transition: border-color 0.15s ease, color 0.15s ease;
 
         &:hover {
             border-color: $color-neutral-white;
             color: $color-neutral-white;
         }
+
+        &:focus-visible {
+            outline: 2px solid $color-neutral-white;
+            outline-offset: 2px;
+        }
     }
 }
-
 
 /* ========================================
    Campo de Descrição
@@ -458,15 +524,16 @@
         font-size: 0.9rem;
         font-family: $font-family-inter;
         padding: 0.4rem 0;
-        outline: none;
         transition: border-color 0.15s ease;
 
         &::placeholder {
-            color: rgba($color-neutral-gray-400, 0.5);
+            color: $color-neutral-gray-400;
         }
 
-        &:focus {
-            border-bottom-color: $color-neutral-white;
+        &:focus-visible {
+            outline: none;
+            border-bottom: 2px solid $color-neutral-white;
+            padding-bottom: calc(0.4rem - 1px);
         }
     }
 }
@@ -476,7 +543,7 @@
 ======================================== */
 .confirmacao-error {
     font-size: 0.82rem;
-    color: #ef4444;
+    color: #ff4d4d;
     margin-top: -0.5rem;
 }
 
@@ -493,8 +560,17 @@
         color: $color-neutral-gray-400;
     }
 
+    /* Oculto visualmente mas ainda focável/acionável por teclado */
     &__input {
-        display: none;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
     }
 
     &__trigger {
@@ -510,11 +586,16 @@
         font-size: 0.85rem;
         font-family: $font-family-inter;
         cursor: pointer;
-        transition: all 0.15s ease;
+        transition: border-color 0.15s ease, color 0.15s ease;
 
         &:hover {
             border-color: $color-neutral-white;
             color: $color-neutral-white;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $color-neutral-white;
+            outline-offset: 2px;
         }
     }
 
@@ -575,14 +656,19 @@
             flex-shrink: 0;
 
             &:hover {
-                color: #ef4444;
+                color: #ff4d4d;
+            }
+
+            &:focus-visible {
+                outline: 2px solid $color-neutral-white;
+                outline-offset: 1px;
             }
         }
     }
 
     &__hint {
         font-size: 0.72rem;
-        color: rgba($color-neutral-gray-400, 0.6);
+        color: $color-neutral-gray-400;
         margin: 0;
     }
 }
