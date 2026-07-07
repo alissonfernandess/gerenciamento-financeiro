@@ -2,7 +2,7 @@ import { AbbreviatedName, Input, CustomButton } from "@repo/ui"
 import { TransactionTypeSelector } from "./TransactionTypeSelector"
 
 interface StepDestinatarioProps {
-    user: any
+    user: any // se existir IUsuario em types/index.ts, troca aqui
     search: string
     setSearch: (val: string) => void
     error: string
@@ -47,11 +47,10 @@ export function StepDestinatario({
                 setTypeError={setTypeError}
             />
 
-            {typeError && (
-                <span role="alert" className="sr-only">
-                    Selecione o tipo de transação antes de continuar
-                </span>
-            )}
+            {/* Erro visível E anunciado (container permanente para a live region) */}
+            <span role="alert" className="error">
+                {typeError ? "Selecione o tipo de transação antes de continuar" : ""}
+            </span>
 
             <div className="destinatario-card">
                 <div className="destinatario-header">
@@ -75,14 +74,12 @@ export function StepDestinatario({
                         className="search-input"
                         error={error}
                         aria-label="Nome, CPF/CNPJ ou chave Pix do destinatário"
-                        aria-describedby={error ? "search-error" : "destinatario-heading"}
+                        aria-describedby={error ? "search-error" : undefined}
                         aria-invalid={!!error}
                     />
-                    {error && (
-                        <span id="search-error" role="alert" className="sr-only">
-                            {error}
-                        </span>
-                    )}
+                    <span id="search-error" role="alert" className="error">
+                        {error}
+                    </span>
                 </div>
 
                 <CustomButton
@@ -100,63 +97,52 @@ export function StepDestinatario({
                         Contatos
                     </h3>
 
-                    <ul
-                        className="contacts-list"
-                        role="listbox"
-                        aria-labelledby="contacts-heading"
-                        aria-label="Selecione um contato para transferência"
-                    >
-                        {user?.contatos.map((contact: IContato) => (
-                            <li
-                                key={contact.name}
-                                className={`contact-item ${selectedContact?.name === contact.name ? "selected" : ""}`}
-                                onClick={() => handleSelectContact(contact)}
-                                role="option"
-                                aria-selected={selectedContact?.name === contact.name}
-                                tabIndex={0}
-                                onKeyDown={(e) => {
-                                    if (e.key === "Enter" || e.key === " ") {
-                                        e.preventDefault()
-                                        handleSelectContact(contact)
-                                    }
-                                }}
-                                aria-label={`Selecionar contato ${contact.name}${selectedContact?.name === contact.name ? ", selecionado" : ""}`}
-                            >
-                                <div className="contact-info">
-                                    <AbbreviatedName
-                                        completedName={contact.name}
-                                        circleColor="#354973"
-                                        size={40}
-                                        aria-hidden="true"
-                                    />
-                                    <span className="contact-name">{contact.name}</span>
-                                </div>
-                                <svg
-                                    className="contact-arrow"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    aria-hidden="true"
-                                    focusable="false"
-                                >
-                                    <polyline points="9 18 15 12 9 6" />
-                                </svg>
-                            </li>
-                        ))}
+                    <ul className="contacts-list" aria-labelledby="contacts-heading">
+                        {user?.contatos.map((contact: IContato) => {
+                            const isSelected = selectedContact?.name === contact.name
+                            return (
+                                <li key={contact.name}>
+                                    <button
+                                        type="button"
+                                        className={`contact-item ${isSelected ? "selected" : ""}`}
+                                        onClick={() => handleSelectContact(contact)}
+                                        aria-pressed={isSelected}
+                                    >
+                                        <div className="contact-info">
+                                            <AbbreviatedName
+                                                completedName={contact.name}
+                                                circleColor="#354973"
+                                                size={40}
+                                                aria-hidden="true"
+                                            />
+                                            <span className="contact-name">{contact.name}</span>
+                                        </div>
+                                        <svg
+                                            className="contact-arrow"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            aria-hidden="true"
+                                            focusable="false"
+                                        >
+                                            <polyline points="9 18 15 12 9 6" />
+                                        </svg>
+                                    </button>
+                                </li>
+                            )
+                        })}
                     </ul>
 
-                    {/* Anúncio de seleção para leitores de tela */}
-                    {selectedContact && (
-                        <span role="status" className="sr-only">
-                            Contato {selectedContact.name} selecionado
-                        </span>
-                    )}
+                    {/* Anúncio de seleção (container permanente) */}
+                    <span role="status" className="sr-only">
+                        {selectedContact ? `Contato ${selectedContact.name} selecionado` : ""}
+                    </span>
                 </div>
             </div>
         </div>

@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "../../../../../../packages/ui/styles/typography.scss" as *;
+
 .extrato-page {
   display: flex;
   flex-direction: column;
