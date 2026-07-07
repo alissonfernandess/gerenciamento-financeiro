@@ -6,6 +6,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
     error?: string
 }
 
+// eslint-disable-next-line react/display-name
 export const Input = forwardRef<HTMLInputElement, IInputProps>(
     ({ label, error, className, ...props }, ref) => {
         // Ignora espaços vazios como '\u00A0' que são passados para manter o layout
@@ -20,7 +21,8 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
                     aria-invalid={hasError ? "true" : "false"} 
                     {...props} 
                 />
-                {error && <p className="error">{error}</p>}
+                {error && <p className="error" role="alert">{error}</p>}
+
             </>
         )
     }

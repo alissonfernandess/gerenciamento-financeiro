@@ -12,31 +12,42 @@ export default function CadastroPage() {
             <h1>Cadastre sua conta</h1>
 
             <form className="cadastro-form" onSubmit={handleSubmit(handleNext)} noValidate>
-                <Input
-                    type="text"
-                    placeholder="Nome"
-                    error={errors.nome?.message || '\u00A0'}
-                    {...register("nome", {
-                        required: "Nome é obrigatório",
-                    })}
-                    required
-                />
-
-                <Input
-                    type="tel"
-                    placeholder="(11) 99999-9999"
-                    error={errors.telefone?.message || '\u00A0'}
-                    {...register("telefone", {
-                        required: "Telefone é obrigatório",
-                    })}
-                    required
+                <label className="label-form">
+                    <span>Nome</span>
+                    <Input
+                        type="text"
+                        placeholder="Nome"
+                        error={errors.nome?.message || '\u00A0'}
+                        {...register("nome", {
+                            required: "Nome é obrigatório",
+                        })}
+                        required
                     />
 
-                <button type="submit" className="btn-next">
-                    <span>›</span>
+                </label>
+
+                <label className="label-form">
+                    <span>Telefone</span>
+                    <Input
+                        type="tel"
+                        placeholder="(11) 99999-9999"
+                        error={errors.telefone?.message || '\u00A0'}
+                        {...register("telefone", {
+                            required: "Telefone é obrigatório",
+                        })}
+                        required
+                    />
+                
+                </label>        
+
+                <button type="submit" className="btn-next" style={{
+                    width: "auto"
+                }}>
+                    
+                    <span>Continuar</span>
                 </button>
 
-                <span>Continuar</span>
+          
             </form>
         </>
     )
