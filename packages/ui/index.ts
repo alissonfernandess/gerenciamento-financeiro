@@ -16,4 +16,7 @@ export * from './src/components/Cadastro/Cadastro';
 export * from './src/components/Input/Input';
 export * from './src/components/Sidebar/Sidebar';
 export * from './src/components/AmountInput/AmountInput';
+export * from "./src/components/DashboardMetric/DashboardMetric";
+export * from "./src/components/FinancialChart/FinancialChart";
+export * from "./src/components/GoalCard/GoalCard";
 export * from './utils';  

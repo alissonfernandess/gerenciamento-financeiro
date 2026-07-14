@@ -1,0 +1,40 @@
+@import '../../../styles/typography.scss';
+
+.dashboard-metric {
+  background: $color-primary-900;
+  border-radius: 16px;
+  padding: 20px;
+  min-width: 180px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+  &__title {
+    display: block;
+    font-size: 14px;
+    color: $color-neutral-gray-300;
+    margin-bottom: 8px;
+  }
+
+  &__value {
+    display: block;
+    font-size: 24px;
+    color: $color-neutral-white;
+    margin-bottom: 8px;
+  }
+
+  &__variation {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &--positive .dashboard-metric__variation {
+    color: $positive-value;
+  }
+
+  &--negative .dashboard-metric__variation {
+    color: $negative-value;
+  }
+
+  &--neutral .dashboard-metric__variation {
+    color: $color-neutral-gray-300;
+  }
+}

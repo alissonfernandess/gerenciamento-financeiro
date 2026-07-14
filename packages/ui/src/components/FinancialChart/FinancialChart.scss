@@ -1,0 +1,30 @@
+@import '../../../styles/typography.scss';
+
+.financial-chart {
+  background: $color-primary-900;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+  &__header {
+    margin-bottom: 20px;
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: $color-neutral-white;
+    }
+
+    p {
+      margin-top: 6px;
+      font-size: 0.875rem;
+      color: $color-neutral-gray-300;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    min-height: 300px;
+  }
+}

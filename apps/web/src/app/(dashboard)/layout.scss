@@ -1,5 +1,17 @@
 @use "../../../../../packages/ui/styles/typography.scss" as *;
 
+
+.grafico-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.metrics-section {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
 .layout {
     display: grid;
     min-height: 100vh;

@@ -9,6 +9,14 @@ declare global {
         transactionType: TransactionType;
         description: string;
         bckColor: Color;
+        attachments?: IAttachment[];
+    }
+
+    interface IAttachment {
+        name: string;
+        size: number;
+        type: string;
+        dataUrl: string;
     }
 
     interface IContato {
