@@ -1,0 +1,56 @@
+@import '../../../styles/typography.scss';
+
+.AmountInput {
+    width: 100%;
+    height: 80px;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+
+    .valor-input-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+
+        .currency-label {
+            color: $color-neutral-white;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .valor-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: $color-neutral-white;
+            font-size: 28px;
+            font-weight: 700;
+            font-family: $font-family-inter;
+            width: 100%;
+
+            &::placeholder {
+                color: rgba($color-neutral-white, 0.4);
+            }
+        }
+    }
+}
+
+@media (max-width: $mobile) {
+    .AmountInput {
+        height: 64px;
+        padding: 0 20px;
+
+        .valor-input-wrapper {
+            .currency-label,
+            .valor-input {
+                font-size: 22px;
+            }
+        }
+    }
+}

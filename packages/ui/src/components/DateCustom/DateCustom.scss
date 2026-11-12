@@ -1,0 +1,50 @@
+@import '../../../styles/typography.scss';
+
+/* =====================================
+   Component
+===================================== */
+.DateCustom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+
+  color: $color-neutral-gray-400;
+
+  font-family: $font-family-inter;
+  font-size: $base-font-size;
+  font-weight: 500;
+  line-height: $base-line-height;
+
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+
+  transition: font-size 0.2s ease-in-out, color 0.2s ease-in-out;
+
+  /* =====================================
+     Tablet
+     15px
+  ===================================== */
+  @media (max-width: $tablet) {
+    font-size: 15px;
+  }
+
+  /* =====================================
+     Mobile
+     14px
+  ===================================== */
+  @media (max-width: $mobile) {
+    font-size: 14px;
+  }
+
+  /* =====================================
+     Small Mobile
+     13px
+  ===================================== */
+  @media (max-width: $small-mobile) {
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+}
