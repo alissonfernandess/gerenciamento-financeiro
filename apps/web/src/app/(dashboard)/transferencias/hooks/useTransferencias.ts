@@ -1,7 +1,16 @@
 import { useState } from "react"
 import { useUser } from "@/contexts/UserContext"
 import { useRouter } from "next/navigation"
-import { keys } from "@repo/ui"
+// MUDANÇA (Clean Architecture): as regras de negócio (validar destinatário, parsear
+// valor, checar saldo, montar a transação) saíram deste hook e foram para o
+// TransferService (core/services). O hook agora só guarda o estado da tela e chama
+// o service; não conhece mais as regras, só o resultado delas.
+import type { Contact } from "@/core/entities/Contact"
+import {
+    createTransfer,
+    isTransferTypeValid,
+    validateRecipient,
+} from "@/core/services/TransferService"
 
 export function useTransferencias() {
     const { user, setUser } = useUser()
@@ -11,7 +20,7 @@ export function useTransferencias() {
     const [selectedType, setSelectedType] = useState("")
     const [dropdownOpen, setDropdownOpen] = useState(false)
     const [search, setSearch] = useState("")
-    const [selectedContact, setSelectedContact] = useState<IContato | null>(null)
+    const [selectedContact, setSelectedContact] = useState<Contact | null>(null)
     const [valor, setValor] = useState("")
     const [error, setError] = useState("")
     const [typeError, setTypeError] = useState(false)
@@ -20,38 +29,23 @@ export function useTransferencias() {
         c.name.toLowerCase().includes(search.toLowerCase())
     )
 
-    const handleSelectContact = (contact: IContato) => {
+    const handleSelectContact = (contact: Contact) => {
         setSelectedContact(contact)
         setSearch(contact.name)
     }
 
     const handleContinue = () => {
-        let hasError = false
         setError("")
         setTypeError(false)
 
-        if (!selectedType) {
-            setTypeError(true)
-            hasError = true
-        }
+        // Regras de validação vêm do domínio; aqui só traduzimos o resultado em estado de tela.
+        const typeIsValid = isTransferTypeValid(selectedType)
+        const recipientError = validateRecipient(search, selectedContact)
 
-        if (!selectedContact && !search) {
-            setError("Informe o destinatário")
-            hasError = true
-        } else if (!selectedContact) {
-            const isNumeric = /^\d+$/.test(search.replace(/[.\-\/]/g, ""))
-            const cleanSearch = search.replace(/[.\-\/]/g, "")
-            
-            if (isNumeric && cleanSearch.length !== 11 && cleanSearch.length !== 14) {
-                setError("CPF deve ter 11 dígitos ou CNPJ 14 dígitos")
-                hasError = true
-            } else if (!isNumeric && search.length < 3) {
-                setError("O nome ou chave deve ter pelo menos 3 caracteres")
-                hasError = true
-            }
-        }
+        if (!typeIsValid) setTypeError(true)
+        if (recipientError) setError(recipientError)
 
-        if (!hasError) {
+        if (typeIsValid && !recipientError) {
             setStep(2)
         }
     }
@@ -59,41 +53,30 @@ export function useTransferencias() {
     const handleConcluir = () => {
         if (!user || !valor) return
 
-        const valorNumerico = parseFloat(valor.replace(/[^\d,]/g, "").replace(",", "."))
-        
-        if (isNaN(valorNumerico) || valorNumerico <= 0) {
-            alert("Valor inválido")
+        // O service valida valor/saldo e monta a transação. `now` é passado de fora
+        // para o service continuar puro (sem depender do relógio).
+        const result = createTransfer({
+            balance: user.saldo,
+            rawAmount: valor,
+            selectedType,
+            recipientName: selectedContact?.name || search,
+            now: new Date(),
+        })
+
+        // Comportamento mantido: erro continua sendo mostrado com alert().
+        // (A mensagem agora vem do domínio; trocar alert por toast é tarefa da UI.)
+        if (!result.ok) {
+            alert(result.error)
             return
         }
 
-        if (valorNumerico > user.saldo) {
-            alert("Saldo insuficiente")
-            return
-        }
-
-        const novoSaldo = user.saldo - valorNumerico
-
-        const novaTransacao: ITransaction = {
-            key: Date.now(),
-            date: new Date().toISOString().slice(0, 10),
-            value: valorNumerico,
-            operationBank: "withdrawal",
-            transactionType: (selectedType.toLowerCase() || "pix") as TransactionType,
-            description: `Transferência para ${selectedContact?.name || search}`,
-            bckColor: "secondary",
-        }
-
-        const usuarioAtualizado = {
+        setUser({
             ...user,
-            saldo: novoSaldo,
-            transacoes: [novaTransacao, ...user.transacoes]
-        }
-
-        setUser(usuarioAtualizado)
-        
+            saldo: result.newBalance,
+            transacoes: [result.transaction, ...user.transacoes],
+        })
 
         router.push("/dashboard")
-
     }
 
     return {

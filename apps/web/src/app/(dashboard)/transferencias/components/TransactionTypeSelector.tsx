@@ -1,4 +1,6 @@
-import { transactionTypes } from "@/data"
+// MUDANÇA: a lista de formas de transferência veio de `@/data` (mock) e agora é uma
+// constante do domínio (`TRANSFER_TYPES`), pois define o que o negócio permite.
+import { TRANSFER_TYPES } from "@/core/entities/Transaction"
 
 interface TransactionTypeSelectorProps {
     selectedType: string
@@ -43,7 +45,7 @@ export function TransactionTypeSelector({
 
             {dropdownOpen && (
                 <ul className="type-dropdown-menu">
-                    {transactionTypes.map((type) => (
+                    {TRANSFER_TYPES.map((type) => (
                         <li
                             key={type}
                             className={`type-option ${selectedType === type ? "active" : ""}`}

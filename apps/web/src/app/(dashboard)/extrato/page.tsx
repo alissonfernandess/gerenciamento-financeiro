@@ -2,6 +2,8 @@
 
 import { TransactionLine } from "@repo/ui"
 import { FiEdit2 } from "react-icons/fi"
+// MUDANÇA: `ITransaction` era um tipo global; agora a entidade é importada do domínio.
+import type { Transaction } from "@/core/entities/Transaction"
 import "./page.scss"
 import { useExtrato } from "./hooks/useExtrato"
 
@@ -26,7 +28,7 @@ export default function ExtratoPage() {
                     </div>
 
                     <div className="extrato-tbody">
-                        {transactions.map((transaction: ITransaction, index: number) => (
+                        {transactions.map((transaction: Transaction, index: number) => (
                             <TransactionLine
                                 key={transaction.key}
                                 index={index}

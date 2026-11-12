@@ -60,3 +60,24 @@ body {
     justify-content: center;
   }
 }
+
+// MUDANÇA (autenticação): estilos do link "Entrar / Cadastre-se" e da mensagem de erro do servidor.
+.auth-switch {
+  margin-top: $spacing-md;
+  color: $color-primary-900;
+  font-size: $caption-font-size-md;
+  text-align: center;
+
+  a {
+    color: inherit;
+    font-weight: $font-weight-bold;
+    text-decoration: underline;
+  }
+}
+
+.form-error {
+  margin-top: $spacing-sm;
+  color: #b3261e;
+  font-size: 14px;
+  text-align: center;
+}

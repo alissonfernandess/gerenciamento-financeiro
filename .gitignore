@@ -5,6 +5,9 @@ node_modules
 .pnp
 .pnp.js
 
+# Dados locais de usuários (telefone cifrado + hash de senha)
+.data/
+
 # Local env files
 .env
 .env.local

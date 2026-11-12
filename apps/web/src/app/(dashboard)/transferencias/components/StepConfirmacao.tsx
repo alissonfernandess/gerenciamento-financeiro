@@ -1,8 +1,10 @@
 import { AmountInput, formatCurrency, CustomButton } from "@repo/ui"
+// MUDANÇA: `IContato` (global) → entidade `Contact` importada do domínio.
+import type { Contact } from "@/core/entities/Contact"
 
 interface StepConfirmacaoProps {
     user: any
-    selectedContact: IContato | null
+    selectedContact: Contact | null
     search: string
     selectedType: string
     valor: string

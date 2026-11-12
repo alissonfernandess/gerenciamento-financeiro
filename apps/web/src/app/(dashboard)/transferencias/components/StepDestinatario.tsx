@@ -1,5 +1,7 @@
 import { AbbreviatedName, Input, CustomButton } from "@repo/ui"
 import { TransactionTypeSelector } from "./TransactionTypeSelector"
+// MUDANÇA: `IContato` (global) → entidade `Contact` importada do domínio.
+import type { Contact } from "@/core/entities/Contact"
 
 interface StepDestinatarioProps {
     user: any
@@ -7,8 +9,8 @@ interface StepDestinatarioProps {
     setSearch: (val: string) => void
     error: string
     setError: (val: string) => void
-    selectedContact: IContato | null
-    handleSelectContact: (contact: IContato) => void
+    selectedContact: Contact | null
+    handleSelectContact: (contact: Contact) => void
     handleContinue: () => void
     selectedType: string
     typeError: boolean
@@ -78,7 +80,7 @@ export function StepDestinatario({
                     <h3 className="contacts-title">Contatos</h3>
 
                     <ul className="contacts-list">
-                        {user?.contatos.map((contact: IContato) => (
+                        {user?.contatos.map((contact: Contact) => (
                             <li
                                 key={contact.name}
                                 className={`contact-item ${selectedContact?.name === contact.name ? "selected" : ""}`}

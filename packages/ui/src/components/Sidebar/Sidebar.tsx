@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from 'react';
+import { ElementType, FC, useState } from 'react';
 import './Sidebar.scss';
 
 export type SidebarItem = {
@@ -13,9 +13,19 @@ export type SidebarProps = {
     items: SidebarItem[];
     userName: string;
     activePath?: string;
+    /**
+     * MUDANÇA (pré-carregamento): componente usado para renderizar os links.
+     * O padrão continua sendo <a>, mas o app pode passar o <Link> do Next para ter
+     * navegação sem recarregar a página e prefetch automático. Receber o componente
+     * por prop mantém o pacote `ui` independente do Next (design system reutilizável).
+     */
+    linkComponent?: ElementType;
+    /** MUDANÇA (autenticação): se informado, exibe o botão "Sair" no menu. */
+    onLogout?: () => void;
 };
 
-export const Sidebar: FC<SidebarProps> = ({ items, userName, activePath }) => {
+export const Sidebar: FC<SidebarProps> = ({ items, userName, activePath, linkComponent, onLogout }) => {
+    const LinkComponent: ElementType = linkComponent ?? 'a';
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleSidebar = () => setIsOpen(!isOpen);
@@ -52,14 +62,24 @@ export const Sidebar: FC<SidebarProps> = ({ items, userName, activePath }) => {
 
                         const Icon = item.icon;
                         return (
-                            <a key={index} href={item.href} className={`sidebar-link ${isActive ? 'active' : ''}`} onClick={closeSidebar}>
+                            <LinkComponent key={index} href={item.href} className={`sidebar-link ${isActive ? 'active' : ''}`} onClick={closeSidebar}>
                                 {Icon && typeof Icon !== 'string' ? (
                                     <Icon size={20} className="link-icon" />
                                 ) : null}
                                 <span className={`link-label ${isActive ? 'active' : ''}`}>{item.label}</span>
-                            </a>
+                            </LinkComponent>
                         );
                     })}
+
+                    {onLogout && (
+                        <button
+                            type="button"
+                            className="sidebar-link sidebar-logout"
+                            onClick={() => { closeSidebar(); onLogout(); }}
+                        >
+                            <span className="link-label">Sair</span>
+                        </button>
+                    )}
                 </nav>
             </aside>
         </>
